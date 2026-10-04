@@ -1,4 +1,5 @@
 ---
+import { BLOG_MAINTENANCE } from '../lib/flags.mjs';
 import { localePath, t, type Locale } from '../i18n';
 import logoWhite from '../assets/logo-white.png';
 
@@ -8,7 +9,7 @@ const links = [
   ['/', 'common.nav_home'],
   ['/services', 'common.nav_services'],
   ['/portfolio', 'common.nav_portfolio'],
-  ['/blog', 'common.nav_blog'],
+  ...(BLOG_MAINTENANCE ? [] : [['/blog', 'common.nav_blog']] as const),
   ['/a-propos', 'common.nav_about'],
   ['/contact', 'common.nav_contact'],
 ] as const;

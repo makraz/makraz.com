@@ -3,12 +3,23 @@ import { getCollection } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import Kicker from '../../../components/Kicker.astro';
 import ImagePlaceholder from '../../../components/ImagePlaceholder.astro';
-import { locales, t, localePath, type Locale } from '../../../i18n';
+import BlogMaintenance from '../../../components/BlogMaintenance.astro';
+import { locales, t, localePath, type Locale, isLocale } from '../../../i18n';
+import { BLOG_MAINTENANCE } from '../../../lib/flags.mjs';
 
 export function getStaticPaths() {
   return locales.map((lang) => ({ params: { lang } }));
 }
 const lang = Astro.params.lang as Locale;
+
+// In maintenance this route is server-rendered (see the blog-maintenance integration in
+// astro.config.mjs), so it validates its own params and answers 503 instead of the hub.
+if (BLOG_MAINTENANCE) {
+  if (!isLocale(lang)) return new Response(null, { status: 404 });
+  Astro.response.status = 503;
+  Astro.response.headers.set('Retry-After', '86400');
+  Astro.response.headers.set('Cache-Control', 'no-store');
+}
 
 const posts = (await getCollection('blog', (e) => e.data.lang === lang))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
@@ -25,6 +36,7 @@ const description = t(lang, 'blog.hero_sub');
   counts against sitewide quality. The articles themselves stay indexable. Remove `noindex` (and the
   /blog line from the sitemap filter) once there are three real pieces.
 */}
+{BLOG_MAINTENANCE ? <BlogMaintenance lang={lang} path="/blog" /> : (
 <Base lang={lang} path="/blog" title={title} description={description} active="blog" ctaPage="blog" noindex>
   <!-- Hero -->
   <section class="mk-container pb-[72px] pt-[100px]">
@@ -59,3 +71,4 @@ const description = t(lang, 'blog.hero_sub');
     </div>
   </section>
 </Base>
+)}

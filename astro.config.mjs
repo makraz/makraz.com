@@ -5,6 +5,7 @@ import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
+import { BLOG_MAINTENANCE } from './src/lib/flags.mjs';
 
 const LOCALES = ['fr', 'en', 'ar'];
 
@@ -103,12 +104,24 @@ export default defineConfig({
   adapter: cloudflare({ imageService: 'compile' }),
   trailingSlash: 'never',
   integrations: [
+    // A prerendered page is served straight from static assets with a 200, so the blog routes are
+    // switched to on-demand rendering while in maintenance: only then can they answer 503.
+    {
+      name: 'blog-maintenance',
+      hooks: {
+        'astro:route:setup': ({ route }) => {
+          if (BLOG_MAINTENANCE && route.component.startsWith('src/pages/[lang]/blog/')) route.prerender = false;
+        },
+      },
+    },
     sitemap({
       i18n: { defaultLocale: 'fr', locales: { fr: 'fr', en: 'en', ar: 'ar' } },
       // Pages that carry noindex are kept out of the sitemap too, so the two signals agree:
       // /mycard is a QR destination rather than search content, and the /blog hub stays out until
       // its articles have had an editorial pass. Individual articles stay listed.
-      filter: (page) => !/\/mycard\/?$/.test(page) && !/\/blog\/?$/.test(page),
+      // In blog maintenance the articles go too: a sitemap should only list URLs that answer 200.
+      filter: (page) =>
+        !/\/mycard\/?$/.test(page) && !(BLOG_MAINTENANCE ? /\/blog(\/|$)/ : /\/blog\/?$/).test(page),
       serialize(item) {
         const lastmod = lastmodFor(item.url);
         if (lastmod) item.lastmod = lastmod;

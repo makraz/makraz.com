@@ -1,7 +1,8 @@
 import { expect, test } from '@playwright/test';
+import { BLOG_MAINTENANCE } from '../src/lib/flags.mjs';
 
 const langs = ['fr', 'en', 'ar'] as const;
-const paths = ['', '/services', '/portfolio', '/portfolio/farblieferant', '/portfolio/phpmorocco', '/portfolio/aya', '/a-propos', '/contact', '/blog', '/mentions-legales'];
+const paths = ['', '/services', '/portfolio', '/portfolio/farblieferant', '/portfolio/phpmorocco', '/portfolio/aya', '/a-propos', '/contact', ...(BLOG_MAINTENANCE ? [] : ['/blog']), '/mentions-legales'];
 
 for (const lang of langs) {
   for (const path of paths) {
@@ -32,6 +33,7 @@ test('language switcher cycles fr → en on the same page', async ({ page }) => 
 });
 
 test('blog article renders', async ({ page }) => {
+  test.skip(BLOG_MAINTENANCE, 'blog is in maintenance');
   await page.goto('/fr/blog');
   const article = page.locator('main a[href*="/fr/blog/"], a[href*="/fr/blog/"]').first();
   await article.click();
@@ -346,6 +348,7 @@ for (const lang of langs) {
 
 for (const lang of langs) {
   test(`/${lang}/blog lists only real, clickable articles`, async ({ page }) => {
+    test.skip(BLOG_MAINTENANCE, 'blog is in maintenance');
     await page.goto(`/${lang}/blog`);
     const cards = page.locator('section a[href*="/blog/"]');
     const count = await cards.count();
@@ -361,10 +364,42 @@ for (const lang of langs) {
 }
 
 test('the blog hub is noindex while the articles stay indexable', async ({ page }) => {
+  test.skip(BLOG_MAINTENANCE, 'blog is in maintenance');
   await page.goto('/fr/blog');
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
   await page.goto('/fr/blog/seo-multilingue-maroc');
   await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
+});
+
+// --- Blog maintenance ---
+
+test.describe('blog maintenance', () => {
+  test.skip(!BLOG_MAINTENANCE, 'blog is live');
+
+  for (const lang of langs) {
+    for (const path of ['/blog', '/blog/seo-multilingue-maroc']) {
+      test(`/${lang}${path} answers 503 with Retry-After`, async ({ page }) => {
+        // A 503 (not a noindexed 200) is what keeps the articles indexed through the outage.
+        const res = await page.goto(`/${lang}${path}`);
+        expect(res?.status()).toBe(503);
+        expect(res?.headers()['retry-after']).toBeTruthy();
+        await expect(page.locator('h1')).toBeVisible();
+      });
+    }
+  }
+
+  test('an unknown article is a 404, not a 503', async ({ page }) => {
+    expect((await page.goto('/fr/blog/does-not-exist'))?.status()).toBe(404);
+  });
+
+  test('no page links to the blog', async ({ page }) => {
+    await page.goto('/fr');
+    await expect(page.locator('a[href*="/blog"]')).toHaveCount(0);
+  });
+
+  test('the sitemap lists no blog URL', async ({ request }) => {
+    expect(await (await request.get('/sitemap-0.xml')).text()).not.toContain('/blog');
+  });
 });
 
 // --- Service pages (pillar level) ---

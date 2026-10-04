@@ -8,6 +8,7 @@ import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { getPillars, getChildren, type ServiceData } from '../lib/services';
 import { locales, t, type Locale } from '../i18n';
+import { BLOG_MAINTENANCE } from '../lib/flags.mjs';
 
 const SITE = 'https://makraz.com';
 
@@ -88,7 +89,7 @@ export const GET: APIRoute = async () => {
     const posts = allBlog
       .filter((e) => e.data.lang === lang)
       .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-    if (posts.length) {
+    if (posts.length && !BLOG_MAINTENANCE) {
       out.push('', `## ${LOCALE_LABEL[lang]} — ${t(lang, 'common.nav_blog')} (${lang.toUpperCase()})`, '');
       for (const post of posts) {
         out.push(link(post.data.title, `${base}/blog/${post.data.slug}`, post.data.description));

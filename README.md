@@ -22,11 +22,12 @@ Page titles: each page's `seo.<page>_title` key (or a service's `seoTitle` / an 
 
 - every `/{fr,en,ar}/blog` URL and every real article answers **503** with `Retry-After` (via `answerBlogMaintenance` in `src/lib/blog-maintenance.ts`) and shows a short notice (`BlogMaintenance.astro`); unknown slugs and locales are 404s. A 503, not a noindexed 200, is what keeps the articles indexed through the outage, so keep it to weeks, not months;
 - the blog routes are server-rendered instead of prerendered, switched by the `blog-maintenance` integration in `astro.config.mjs` (a prerendered page is served from static assets and can only ever be a 200);
-- Blog disappears from the header, footer, sitemap and `llms.txt`;
+- Blog disappears from the sitemap and `llms.txt`, and from the menus;
 - the e2e suite skips the live-blog tests and runs the `blog maintenance` block instead.
 
 To bring the blog back, set it to `false` and deploy: everything above reverts, and the blog pages are prerendered again.
 
+The menus have their own switch, `BLOG_IN_MENUS` (currently `false`): the header (desktop and mobile) and footer only link to Blog when it is `true` and maintenance is off. Lifting maintenance alone brings the blog pages back without putting them in the menus.
 
 ## Contact form / API
 

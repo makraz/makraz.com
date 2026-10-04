@@ -1,5 +1,5 @@
 ---
-import { BLOG_MAINTENANCE } from '../lib/flags.mjs';
+import { SHOW_BLOG_IN_MENUS } from '../lib/flags.mjs';
 import { localePath, nextLocale, t, type Locale } from '../i18n';
 import logoBlack from '../assets/logo-black.png';
 
@@ -9,7 +9,7 @@ const links = [
   ['home', '/', 'common.nav_home'],
   ['services', '/services', 'common.nav_services'],
   ['portfolio', '/portfolio', 'common.nav_portfolio'],
-  ...(BLOG_MAINTENANCE ? [] : [['blog', '/blog', 'common.nav_blog']] as const),
+  ...(SHOW_BLOG_IN_MENUS ? [['blog', '/blog', 'common.nav_blog']] as const : []),
   ['about', '/a-propos', 'common.nav_about'],
   ['contact', '/contact', 'common.nav_contact'],
 ] as const;

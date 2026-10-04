@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { BLOG_MAINTENANCE } from '../src/lib/flags.mjs';
+import { BLOG_MAINTENANCE, SHOW_BLOG_IN_MENUS } from '../src/lib/flags.mjs';
 
 const langs = ['fr', 'en', 'ar'] as const;
 const paths = ['', '/services', '/portfolio', '/portfolio/farblieferant', '/portfolio/phpmorocco', '/portfolio/aya', '/a-propos', '/contact', ...(BLOG_MAINTENANCE ? [] : ['/blog']), '/mentions-legales'];
@@ -371,6 +371,20 @@ test('the blog hub is noindex while the articles stay indexable', async ({ page 
   await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
 });
 
+// --- Blog kept out of the menus ---
+
+// Covers the header (desktop and mobile) and footer on every non-blog page. The blog's own pages
+// link to their articles, so they are left out.
+for (const lang of langs) {
+  test(`no /${lang} page links to the blog`, async ({ page }) => {
+    test.skip(SHOW_BLOG_IN_MENUS, 'blog is in the menus');
+    for (const path of paths.filter((p) => p !== '/blog')) {
+      await page.goto(`/${lang}${path}`);
+      await expect(page.locator('a[href*="/blog"]'), `/${lang}${path}`).toHaveCount(0);
+    }
+  });
+}
+
 // --- Blog maintenance ---
 
 test.describe('blog maintenance', () => {
@@ -392,15 +406,6 @@ test.describe('blog maintenance', () => {
     expect((await page.goto('/fr/blog/does-not-exist'))?.status()).toBe(404);
     expect((await page.goto('/xx/blog'))?.status()).toBe(404);
   });
-
-  for (const lang of langs) {
-    test(`no /${lang} page links to the blog`, async ({ page }) => {
-      for (const path of paths) {
-        await page.goto(`/${lang}${path}`);
-        await expect(page.locator('a[href*="/blog"]'), `/${lang}${path}`).toHaveCount(0);
-      }
-    });
-  }
 
 
   test('the sitemap lists no blog URL', async ({ request }) => {

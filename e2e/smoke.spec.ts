@@ -197,7 +197,7 @@ test('the arabic case study is RTL and points its back link the right way', asyn
 
 test('the hero is headline, sub and CTAs only', async ({ page }) => {
   await page.goto('/fr');
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Développement Web');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Construire');
   await expect(page.locator('a[href="/fr/contact"].btn-primary')).toBeVisible();
   // Everything that used to sit below the CTAs is gone: the vanity figures, the capability chips,
   // and the positioning paragraph. Any of these reappearing means a revert slipped through.

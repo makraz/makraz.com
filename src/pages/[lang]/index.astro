@@ -62,11 +62,12 @@ const capabilities = [
   <section class="mk-container pb-[90px] pt-[110px]">
     <Kicker class="mb-7">{t(lang, 'home.hero_kicker')}</Kicker>
     {/*
-      Not `text-h1`: this headline names the three service lines, so it runs ~5x longer than the
-      short statements that class was sized for (88px over 14ch). Own clamp and measure, tuned so
-      the longest locale (FR, 86 chars) sets in three lines on desktop without dominating the fold.
+      Three beats, one per line — that rhythm is the headline, so the breaks are authored with `|`
+      in the i18n string rather than left to the measure, which split EN mid-beat ("Build it.
+      Modernize / it. Grow it."). Nothing but this H1 reads the key, so the delimiter stays here.
+      The service lines the headline used to name now live in the sub below.
     */}
-    <h1 class="m-0 max-w-[24ch] text-[clamp(32px,4.2vw,58px)] font-bold leading-[1.08] tracking-[-0.03em]">{t(lang, 'home.hero_title')}</h1>
+    <h1 class="text-h1 m-0 max-w-[16ch]" set:html={t(lang, 'home.hero_title').split('|').join('<br />')} />
     <p class="mb-11 mt-7 max-w-[62ch] text-[clamp(17px,1.4vw,19px)] leading-[1.65] text-txt-2">{t(lang, 'home.hero_sub')}</p>
     <div class="flex flex-wrap items-center gap-4">
       <a href={localePath(lang, '/contact')} class="btn btn-primary">{t(lang, 'home.hero_cta1')}</a>

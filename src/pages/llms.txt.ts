@@ -51,7 +51,7 @@ export const GET: APIRoute = async () => {
     '',
     `> ${t('fr', 'seo.home_desc')}`,
     '',
-    'Studio digital basé à Marrakech, au Maroc. Ingénierie, design, IA et automatisation, croissance digitale.',
+    'Agence de communication basée à Marrakech, au Maroc. Ingénierie, design, IA et automatisation, croissance digitale.',
     'Le site est publié en trois langues — français (par défaut), anglais et arabe — sous /fr, /en et /ar.',
     'Les chemins d\'URL sont identiques dans les trois langues ; seul le préfixe de langue change.',
     `Sitemap : ${SITE}/sitemap-index.xml`,

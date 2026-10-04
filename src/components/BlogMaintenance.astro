@@ -8,7 +8,7 @@ import { t, localePath, type Locale } from '../i18n';
 interface Props { lang: Locale; path: string }
 const { lang, path } = Astro.props;
 ---
-<Base lang={lang} path={path} title={`${t(lang, 'blog.maint_title')}${t(lang, 'seo.title_suffix')}`} description={t(lang, 'blog.maint_body')} active={null} ctaPage="blog">
+<Base lang={lang} path={path} title={t(lang, 'seo.blog_maint_title')} description={t(lang, 'blog.maint_body')} active={null} ctaPage="blog">
   <section class="mk-container pb-[110px] pt-[100px]">
     <Kicker class="mb-7">{t(lang, 'blog.kicker_page')}</Kicker>
     <h1 class="text-h1 m-0 max-w-[16ch]">{t(lang, 'blog.maint_title')}</h1>

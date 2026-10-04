@@ -5,7 +5,7 @@ kind: leaf
 pillar: developpement
 order: 4
 title: "E-commerce"
-seoTitle: "Online store development in Morocco — MAKRAZ, digital agency"
+seoTitle: "Online store development in Morocco"
 lead: "Online stores built to sell and then to grow: catalogue, payments, delivery and order management."
 project: farblieferant
 included:

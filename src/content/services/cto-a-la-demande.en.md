@@ -5,7 +5,7 @@ kind: leaf
 pillar: direction-technique
 order: 1
 title: "Fractional CTO (CTO on demand)"
-seoTitle: "Fractional CTO — part-time technical leadership — MAKRAZ, digital agency"
+seoTitle: "Fractional CTO — part-time technical leadership"
 lead: "Part-time technical leadership: architecture calls, priorities, hiring — without hiring a full-time CTO."
 included:
   - title: Architecture decisions

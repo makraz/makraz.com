@@ -5,7 +5,7 @@ kind: leaf
 pillar: design
 order: 2
 title: "Branding & identity"
-seoTitle: "Brand identity design and guidelines — MAKRAZ, digital agency"
+seoTitle: "Brand identity design and guidelines"
 lead: "Logos, guidelines and identity work: the visual foundation everything else in your communication rests on."
 included:
   - title: Brand scoping

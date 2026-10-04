@@ -5,7 +5,7 @@ kind: leaf
 pillar: direction-technique
 order: 1
 title: "CTO à la demande (Fractional CTO)"
-seoTitle: "CTO à la demande — direction technique externalisée — MAKRAZ, agence de communication"
+seoTitle: "CTO à la demande — direction technique externalisée"
 lead: "Une direction technique à temps partiel : arbitrages d'architecture, priorités, recrutement — sans embaucher un CTO à plein temps."
 included:
   - title: Arbitrages d'architecture

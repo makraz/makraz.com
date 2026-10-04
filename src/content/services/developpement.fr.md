@@ -6,7 +6,7 @@ pillar: developpement
 order: 1
 number: "01"
 title: Développement
-seoTitle: "Développement web et mobile sur mesure au Maroc — MAKRAZ, agence de communication"
+seoTitle: "Développement web et mobile sur mesure au Maroc"
 lead: Applications web et mobiles, plateformes métier et e-commerce — construits pour être encore là dans cinq ans.
 engagement:
   model: Au forfait quand le périmètre est cadré, en régie quand le produit évolue en continu. Dans les deux cas, un interlocuteur technique responsable du résultat, et du code qui vous appartient intégralement.

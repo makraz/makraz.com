@@ -43,7 +43,7 @@ const PROJECTS = {
 } as const;
 const project = data.project ? PROJECTS[data.project] : undefined;
 
-const title = data.seoTitle ?? `${data.title}${t(lang, 'seo.title_suffix')}`;
+const title = data.seoTitle ?? data.title;
 const description = data.lead;
 ---
 <Base lang={lang} path={`/services/${data.slug}`} title={title} description={description} active="services" ctaPage="services">

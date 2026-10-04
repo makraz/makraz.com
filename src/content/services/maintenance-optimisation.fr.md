@@ -5,7 +5,7 @@ kind: leaf
 pillar: developpement
 order: 8
 title: "Maintenance & optimisation"
-seoTitle: "Maintenance et reprise d'application existante — MAKRAZ, agence de communication"
+seoTitle: "Maintenance et reprise d'application existante"
 lead: "Reprendre, sécuriser et accélérer une application existante — y compris quand ce n'est pas nous qui l'avons écrite."
 included:
   - title: Audit de reprise

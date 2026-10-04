@@ -5,7 +5,7 @@ kind: leaf
 pillar: communication
 order: 2
 title: "الإعلانات الرقمية (SEA)"
-seoTitle: "الإعلانات المدفوعة: Google Ads وMeta وTikTok — MAKRAZ، وكالة رقمية"
+seoTitle: "الإعلانات المدفوعة: Google Ads وMeta وTikTok"
 lead: "Google Ads وMeta وTikTok: استهداف، وتصاميم، واختبارات — حملات تُقاس بالطلبات لا بالنقرات."
 included:
   - title: بنية الحساب

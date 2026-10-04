@@ -5,7 +5,7 @@ kind: leaf
 pillar: developpement
 order: 5
 title: "MVP & lancement rapide"
-seoTitle: "Développement de MVP : lancer vite, proprement — MAKRAZ, agence de communication"
+seoTitle: "Développement de MVP : lancer vite, proprement"
 lead: "De l'idée au premier utilisateur en quelques semaines, sans construire une dette qu'il faudra rembourser en année deux."
 included:
   - title: Réduction du périmètre

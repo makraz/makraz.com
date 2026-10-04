@@ -23,7 +23,7 @@ const capabilities = [
   'home.cap8', 'home.cap9',
 ] as const;
 ---
-<Base lang={lang} path="/" title={title} description={description} active="home">
+<Base lang={lang} path="/" title={title} brand={false} description={description} active="home">
   {/*
     Dual-typed: Organization alone gives no local signal, and ProfessionalService is a LocalBusiness
     subtype, which is what earns a place in local results for "agence développement web Marrakech".
@@ -73,7 +73,7 @@ const capabilities = [
       Modernize / it. Grow it."). Nothing but this H1 reads the key, so the delimiter stays here.
       The service lines the headline used to name now live in the sub below.
     */}
-    <h1 class="text-h1 m-0 max-w-[16ch]" set:html={t(lang, 'home.hero_title').split('|').join('<br />')} />
+    <h1 class="text-h1 m-0 max-w-[16ch]">{t(lang, 'home.hero_title').split('|').map((beat, i) => <>{i > 0 && <br />}{beat}</>)}</h1>
     <p class="mb-11 mt-7 max-w-[62ch] text-[clamp(17px,1.4vw,19px)] leading-[1.65] text-txt-2">{t(lang, 'home.hero_sub')}</p>
     <div class="flex flex-wrap items-center gap-4">
       <a href={localePath(lang, '/contact')} class="btn btn-primary">{t(lang, 'home.hero_cta1')}</a>

@@ -5,7 +5,7 @@ kind: leaf
 pillar: developpement
 order: 3
 title: "مواقع الإنترنت"
-seoTitle: "إنشاء موقع إلكتروني بمراكش — MAKRAZ، وكالة رقمية"
+seoTitle: "إنشاء موقع إلكتروني بمراكش"
 lead: "مواقع تعريفية ومؤسّسية: سريعة، ومحدَّثة، ومصمّمة لتحويل الزيارة إلى تواصل."
 project: aya
 included:

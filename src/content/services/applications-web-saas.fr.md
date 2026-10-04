@@ -5,7 +5,7 @@ kind: leaf
 pillar: developpement
 order: 1
 title: "Applications web & SaaS"
-seoTitle: "Développement d'application web et SaaS sur mesure — MAKRAZ, agence de communication"
+seoTitle: "Développement d'application web et SaaS sur mesure"
 lead: "Plateformes métier, portails clients et produits SaaS : le logiciel qui fait tourner votre activité au quotidien."
 project: phpmorocco
 included:

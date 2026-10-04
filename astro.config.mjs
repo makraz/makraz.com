@@ -24,18 +24,16 @@ function sourcesFor(url) {
   const [, lang, rest = ''] = match;
   const slug = rest.split('/')[2];
   const files = [];
+  // The page's i18n namespace: its copy lives in `<ns>.*` keys and its <title>/<meta description>
+  // in `seo.<ns>_*` keys, so both count towards its lastmod.
   /** @type {string | undefined} */
-  let prefix;
-  // The page's <title>/<meta description> live in seo.<page>_* keys, outside its copy namespace.
-  /** @type {string | undefined} */
-  let seoPrefix;
+  let ns;
 
-  if (rest === '') { files.push('src/pages/[lang]/index.astro'); prefix = 'home.'; seoPrefix = 'seo.home_'; }
+  if (rest === '') { files.push('src/pages/[lang]/index.astro'); ns = 'home'; }
   else if (/^\/blog\/[^/]+$/.test(rest)) files.push(`src/content/blog/${slug}.${lang}.md`, 'src/pages/[lang]/blog/[slug].astro');
   else if (/^\/portfolio\/[^/]+$/.test(rest)) {
     files.push(`src/pages/[lang]/portfolio/${slug}.astro`, `src/content/case-studies/${slug}.${lang}.md`);
-    prefix = `case_${slug}.`;
-    seoPrefix = `seo.case_${slug}_`;
+    ns = `case_${slug}`;
   }
   // Service pages are one dynamic route over a content collection, so the page's own source is the
   // markdown file, not a per-slug .astro. Without this branch they shipped with no lastmod at all.
@@ -43,15 +41,12 @@ function sourcesFor(url) {
     files.push(`src/content/services/${slug}.${lang}.md`, 'src/pages/[lang]/services/[slug].astro');
   } else {
     files.push(`src/pages/[lang]${rest}.astro`);
-    prefix = { '/services': 'services.', '/portfolio': 'portfolio.', '/a-propos': 'about.', '/contact': 'contact.', '/blog': 'blog.', '/mentions-legales': 'legal.' }[rest];
-    if (prefix) seoPrefix = `seo.${prefix.replace(/\.$/, '')}_`;
+    ns = { '/services': 'services', '/portfolio': 'portfolio', '/a-propos': 'about', '/contact': 'contact', '/blog': 'blog', '/mentions-legales': 'legal' }[rest];
   }
 
   return {
     files: files.filter((f) => existsSync(f)),
-    keyspace: prefix
-      ? { file: `src/i18n/${lang}.json`, prefixes: [prefix, ...(seoPrefix ? [seoPrefix] : [])] }
-      : undefined,
+    keyspace: ns ? { file: `src/i18n/${lang}.json`, prefixes: [`${ns}.`, `seo.${ns}_`] } : undefined,
   };
 }
 
@@ -87,7 +82,7 @@ function lastmodFor(url) {
     for (const prefix of keyspace.prefixes) {
       // -G matches commits whose diff touched a line containing this key prefix, so a page's date
       // moves when its own copy or its title/description changed, not when any copy anywhere changed.
-      const out = commitDate([`-G"${prefix.replace('.', '\\.')}`, '--', keyspace.file]);
+      const out = commitDate([`-G"${prefix.replaceAll('.', '\\.')}`, '--', keyspace.file]);
       if (out && (!newest || out > newest)) newest = out;
     }
   }

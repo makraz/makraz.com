@@ -23,7 +23,7 @@ const PHONE_DISPLAY = '+212 661 764 392';
 const EMAIL = 'contact@makraz.com';
 const MAPS = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('Centre d\'affaires Itrane, Bab Doukkala, Marrakech, Maroc');
 
-const title = t(lang, 'seo.mycard_title');
+const title = t(lang, 'seo.mycard_title') + t(lang, 'seo.title_suffix');
 const description = t(lang, 'seo.mycard_desc');
 const canonical = new URL(localePath(lang, '/mycard'), Astro.site);
 

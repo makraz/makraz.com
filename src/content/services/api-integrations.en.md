@@ -5,7 +5,7 @@ kind: leaf
 pillar: developpement
 order: 6
 title: "APIs & integrations"
-seoTitle: "API development and business integrations — MAKRAZ, digital agency"
+seoTitle: "API development and business integrations"
 lead: "Making your tools talk to each other: payments, CRM, ERP, logistics — and APIs others can consume."
 included:
   - title: API design

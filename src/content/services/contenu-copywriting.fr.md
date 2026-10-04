@@ -5,7 +5,7 @@ kind: leaf
 pillar: communication
 order: 5
 title: "Contenu & copywriting"
-seoTitle: "Rédaction web et copywriting trilingue — MAKRAZ, agence de communication"
+seoTitle: "Rédaction web et copywriting trilingue"
 lead: "Rédaction, articles et newsletters — en français, arabe et anglais, écrits pour être lus autant que pour être trouvés."
 included:
   - title: Textes de site

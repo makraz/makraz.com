@@ -6,7 +6,7 @@ pillar: direction-technique
 order: 4
 number: "04"
 title: Direction technique & équipes
-seoTitle: "Direction technique externalisée et équipes dédiées — MAKRAZ, agence de communication"
+seoTitle: "Direction technique externalisée et équipes dédiées"
 lead: Quand il vous manque non pas des développeurs, mais quelqu'un qui répond de la technique.
 engagement:
   model: Un audit court et cadré pour établir l'état des lieux, puis une présence récurrente à temps partiel, ou une équipe dédiée quand il faut aussi produire. Sans recrutement à plein temps ni dilution du capital.

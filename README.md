@@ -4,15 +4,29 @@ Production site for [makraz.com](https://makraz.com), built with Astro on Cloudf
 
 ## Stack
 
-- **Astro 7.1.3** with `@astrojs/cloudflare` 14.1.4, `output: 'static'`.
-- Build produces a static client bundle at `dist/client/` and a server bundle (contact API route) at `dist/server/`. The root `wrangler.jsonc` is the pre-build source config (adapter placeholder `main`, `assets.directory: ./dist`); the build resolves it into the config that's actually consumed, `dist/server/wrangler.json` (`main: entry.mjs`, `assets.directory: ../client`), which is what `wrangler dev`/`wrangler deploy` run against.
+- **Astro 7.3** with `@astrojs/cloudflare` 14.3, `output: 'static'`. Every page is prerendered except the contact API route and, while `BLOG_MAINTENANCE` is on, the blog routes (see [Blog maintenance](#blog-maintenance)).
+- Build produces a static client bundle at `dist/client/` and a server bundle (the contact API route, plus the blog routes during maintenance) at `dist/server/`. The root `wrangler.jsonc` is the pre-build source config (adapter placeholder `main`, `assets.directory: ./dist`); the build resolves it into the config that's actually consumed, `dist/server/wrangler.json` (`main: entry.mjs`, `assets.directory: ../client`), which is what `wrangler dev`/`wrangler deploy` run against.
 - Tailwind CSS 4 via `@tailwindcss/vite`.
 - `@astrojs/sitemap` for the sitemap, locale-aware (`fr`/`en`/`ar`).
-- Content collections: `src/content/blog/` (one article, `fr`/`en`/`ar`, shared slug via `generateId` in `content.config.ts`) and `src/content/case-studies/` (Farblieferant case study, same 3-locale pattern).
+- Content collections: `src/content/blog/` (three articles, `fr`/`en`/`ar`, shared slug via `generateId` in `content.config.ts`) and `src/content/case-studies/` (Farblieferant case study, same 3-locale pattern).
 
 ## Routes and i18n
 
 Every page exists in three locales — `/fr`, `/en`, `/ar` — with French slugs used throughout (e.g. `/fr/a-propos`). The root `/` redirects to `/fr`. Arabic pages render right-to-left. Translation strings live in `src/i18n/*.json`, namespaced per page plus a shared `common.*` namespace.
+
+Page titles: each page's `seo.<page>_title` key (or a service's `seoTitle` / an article's `title`) holds only the page's own part. `Base.astro` appends the brand suffix from `seo.title_suffix` ("— MAKRAZ, agence de communication" / "digital agency" / "وكالة رقمية"), so changing that label is one key per locale. The home page passes `brand={false}` because its title already leads with the brand. `tests/seo.test.ts` caps the page's own part at 65 characters; the suffix may run past what Google displays.
+
+## Blog maintenance
+
+`BLOG_MAINTENANCE` in `src/lib/flags.mjs` takes the blog offline temporarily. While it is `true`:
+
+- every `/{fr,en,ar}/blog` URL and every real article answers **503** with `Retry-After` (via `answerBlogMaintenance` in `src/lib/blog-maintenance.ts`) and shows a short notice (`BlogMaintenance.astro`); unknown slugs and locales are 404s. A 503, not a noindexed 200, is what keeps the articles indexed through the outage, so keep it to weeks, not months;
+- the blog routes are server-rendered instead of prerendered, switched by the `blog-maintenance` integration in `astro.config.mjs` (a prerendered page is served from static assets and can only ever be a 200);
+- Blog disappears from the header, footer, sitemap and `llms.txt`;
+- the e2e suite skips the live-blog tests and runs the `blog maintenance` block instead.
+
+To bring the blog back, set it to `false` and deploy: everything above reverts, and the blog pages are prerendered again.
+
 
 ## Contact form / API
 
@@ -115,9 +129,9 @@ The site builds and deploys cleanly, but the following content is still placehol
 - **Portfolio screenshots** — done. Captured from the live sites into `src/assets/` and rendered through `Screenshot.astro` (build-time WebP, responsive `srcset`, localized alt text via the `img.*` keys): `farblieferant-{hero,card,catalogue,product}.png`, `phpmorocco-card.png`, `marrakechphp-card.png`. Used on the home page work grid, the portfolio page and the Farblieferant case study. Re-shoot at the same viewports if a client site is redesigned — 1512×648 for the 21/9 case-study hero, 1440×990 for 16/11 cards, 1200×900 for the 4/3 gallery.
 - **Real testimonials** — `home.tm*` translation keys currently hold placeholder quotes.
 - ~~Case study metrics~~ — dropped by decision on 2026-07-25. The Farblieferant case study no longer shows a metrics block or a tech-stack list; the stack is treated as client-confidential and must not be published. The `caseStudies` collection schema has no `stack`/`results` fields any more, so re-adding either means a schema change, not just frontmatter.
-- **Legal information** — RC/ICE/IF registration numbers and the hosting provider name are placeholders in the legal notice page.
-- **Blog article review** — the existing article needs a content/editorial pass from the client before publishing.
-- **EN/AR page titles and meta descriptions** — currently the French copy verbatim for all three locales; need proper translations.
+- **Legal information** — the legal notice shows RC 111683 and the hosting provider; ICE and IF are not published.
+- **Blog article review** — the three articles need a content/editorial pass from the client; the blog is in maintenance until then (see [Blog maintenance](#blog-maintenance)).
+- ~~EN/AR page titles and meta descriptions~~ — done: every `seo.*` key is translated per locale.
 
 ## Deploying
 

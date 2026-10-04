@@ -5,6 +5,7 @@ import ImagePlaceholder from '../../../components/ImagePlaceholder.astro';
 import BlogMaintenance from '../../../components/BlogMaintenance.astro';
 import { t, localePath, type Locale, isLocale } from '../../../i18n';
 import { BLOG_MAINTENANCE } from '../../../lib/flags.mjs';
+import { answerBlogMaintenance } from '../../../lib/blog-maintenance';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -22,15 +23,15 @@ if (BLOG_MAINTENANCE) {
   const exists = isLocale(lang)
     && (await getCollection('blog', (e) => e.data.lang === lang && e.data.slug === Astro.params.slug)).length > 0;
   if (!exists) return new Response(null, { status: 404 });
-  Astro.response.status = 503;
-  Astro.response.headers.set('Retry-After', '86400');
-  Astro.response.headers.set('Cache-Control', 'no-store');
+  answerBlogMaintenance(Astro.response);
 }
 const { post } = Astro.props;
-const { Content } = BLOG_MAINTENANCE ? { Content: null } : await render(post);
+// No props exist in maintenance, so the article is only rendered when the blog is live; a null
+// Content is exactly the maintenance case.
+const Content = BLOG_MAINTENANCE ? null : (await render(post)).Content;
 ---
-{BLOG_MAINTENANCE || !Content ? <BlogMaintenance lang={lang} path={`/blog/${Astro.params.slug}`} /> : (
-<Base lang={lang} path={`/blog/${post.data.slug}`} title={`${post.data.title}${t(lang, 'seo.title_suffix')}`} description={post.data.description} active="blog" ctaPage="article">
+{!Content ? <BlogMaintenance lang={lang} path={`/blog/${Astro.params.slug}`} /> : (
+<Base lang={lang} path={`/blog/${post.data.slug}`} title={post.data.title} description={post.data.description} active="blog" ctaPage="article">
   <article class="mk-container mx-auto max-w-[760px] pb-24 pt-[90px]">
     <a href={localePath(lang, '/blog')} class="text-[14px] font-semibold text-txt-4 hover:text-ink">{t(lang, 'article.back')}</a>
     <div class="mt-9 mb-5 text-[12px] font-semibold uppercase tracking-[.2em] text-txt-4">{t(lang, 'article.a_meta')}</div>

@@ -388,14 +388,20 @@ test.describe('blog maintenance', () => {
     }
   }
 
-  test('an unknown article is a 404, not a 503', async ({ page }) => {
+  test('an unknown article or locale is a 404, not a 503', async ({ page }) => {
     expect((await page.goto('/fr/blog/does-not-exist'))?.status()).toBe(404);
+    expect((await page.goto('/xx/blog'))?.status()).toBe(404);
   });
 
-  test('no page links to the blog', async ({ page }) => {
-    await page.goto('/fr');
-    await expect(page.locator('a[href*="/blog"]')).toHaveCount(0);
-  });
+  for (const lang of langs) {
+    test(`no /${lang} page links to the blog`, async ({ page }) => {
+      for (const path of paths) {
+        await page.goto(`/${lang}${path}`);
+        await expect(page.locator('a[href*="/blog"]'), `/${lang}${path}`).toHaveCount(0);
+      }
+    });
+  }
+
 
   test('the sitemap lists no blog URL', async ({ request }) => {
     expect(await (await request.get('/sitemap-0.xml')).text()).not.toContain('/blog');

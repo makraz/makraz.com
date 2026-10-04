@@ -5,7 +5,7 @@ kind: leaf
 pillar: developpement
 order: 2
 title: "Mobile apps"
-seoTitle: "Mobile app development in Morocco: iOS and Android — MAKRAZ, digital agency"
+seoTitle: "Mobile app development in Morocco: iOS and Android"
 lead: "iOS and Android apps, from concept to store release — and to the updates that follow."
 included:
   - title: Technology choice

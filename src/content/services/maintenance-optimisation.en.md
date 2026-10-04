@@ -5,7 +5,7 @@ kind: leaf
 pillar: developpement
 order: 8
 title: "Maintenance & optimisation"
-seoTitle: "Taking over and maintaining existing applications — MAKRAZ, digital agency"
+seoTitle: "Taking over and maintaining existing applications"
 lead: "Take over, secure and speed up an existing application — including one we did not write."
 included:
   - title: Takeover audit

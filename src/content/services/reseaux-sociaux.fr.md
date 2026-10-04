@@ -5,7 +5,7 @@ kind: leaf
 pillar: communication
 order: 3
 title: "Réseaux sociaux"
-seoTitle: "Community management et réseaux sociaux — MAKRAZ, agence de communication"
+seoTitle: "Community management et réseaux sociaux"
 lead: "Calendriers éditoriaux, animation et suivi : une présence régulière et tenable, plutôt qu'un mois d'enthousiasme."
 project: marrakechphp
 included:

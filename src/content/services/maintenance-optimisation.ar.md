@@ -5,7 +5,7 @@ kind: leaf
 pillar: developpement
 order: 8
 title: "الصيانة والتحسين"
-seoTitle: "استلام وصيانة التطبيقات القائمة — MAKRAZ، وكالة رقمية"
+seoTitle: "استلام وصيانة التطبيقات القائمة"
 lead: "استلام تطبيق قائم وتأمينه وتسريعه — حتى إن لم نكن من كتبه."
 included:
   - title: تدقيق الاستلام

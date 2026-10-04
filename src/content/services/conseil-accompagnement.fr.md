@@ -5,7 +5,7 @@ kind: leaf
 pillar: communication
 order: 6
 title: "Conseil & accompagnement"
-seoTitle: "Conseil digital et accompagnement des équipes — MAKRAZ, agence de communication"
+seoTitle: "Conseil digital et accompagnement des équipes"
 lead: "Un regard extérieur expérimenté : arbitrer un choix, valider une direction, ou former vos équipes."
 included:
   - title: Avis sur une décision

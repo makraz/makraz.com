@@ -5,7 +5,7 @@ kind: leaf
 pillar: communication
 order: 2
 title: "Online advertising (SEA)"
-seoTitle: "Paid advertising: Google Ads, Meta and TikTok — MAKRAZ, digital agency"
+seoTitle: "Paid advertising: Google Ads, Meta and TikTok"
 lead: "Google Ads, Meta, TikTok: targeting, creative and testing — campaigns judged on enquiries, not clicks."
 included:
   - title: Account structure

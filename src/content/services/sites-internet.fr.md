@@ -5,7 +5,7 @@ kind: leaf
 pillar: developpement
 order: 3
 title: "Sites internet"
-seoTitle: "Création de site internet à Marrakech — MAKRAZ, agence de communication"
+seoTitle: "Création de site internet à Marrakech"
 lead: "Sites vitrines et institutionnels : rapides, tenus à jour, et pensés pour transformer une visite en prise de contact."
 project: aya
 included:

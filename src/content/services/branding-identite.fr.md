@@ -5,7 +5,7 @@ kind: leaf
 pillar: design
 order: 2
 title: "Branding & identité"
-seoTitle: "Création d'identité visuelle et de charte graphique — MAKRAZ, agence de communication"
+seoTitle: "Création d'identité visuelle et de charte graphique"
 lead: "Logos, chartes et refontes d'identité : le socle visuel sur lequel repose tout le reste de votre communication."
 included:
   - title: Cadrage de la marque

@@ -5,7 +5,7 @@ kind: leaf
 pillar: communication
 order: 3
 title: "Social media"
-seoTitle: "Social media management and community building — MAKRAZ, digital agency"
+seoTitle: "Social media management and community building"
 lead: "Editorial calendars, community management and reporting: a regular, sustainable presence rather than a month of enthusiasm."
 project: marrakechphp
 included:

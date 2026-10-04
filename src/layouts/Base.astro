@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { dir, locales, localePath, type Locale } from '../i18n';
+import { dir, locales, localePath, t, type Locale } from '../i18n';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CtaBand from '../components/CtaBand.astro';
@@ -8,14 +8,17 @@ import CtaBand from '../components/CtaBand.astro';
 interface Props {
   lang: Locale;
   path: string; // locale-less, e.g. '/services'
-  title: string;
+  title: string; // the page's own part; the brand suffix (seo.title_suffix) is appended here
+  brand?: boolean; // false for a title that already names the brand, i.e. the home page
   description: string;
   active: 'home' | 'services' | 'portfolio' | 'blog' | 'about' | 'contact' | null;
   ctaPage?: string; // namespace for CtaBand keys, default 'home'
   hideCta?: boolean;
   noindex?: boolean; // keep a page out of search results while it is too thin to earn a place
 }
-const { lang, path, title, description, active, ctaPage = 'home', hideCta = false, noindex = false } = Astro.props;
+const { lang, path, title: pageTitle, brand = true, description, active, ctaPage = 'home', hideCta = false, noindex = false } = Astro.props;
+// Composed in one place so a change of brand label is one i18n key, not a hundred title strings.
+const title = brand ? `${pageTitle}${t(lang, 'seo.title_suffix')}` : pageTitle;
 const canonical = new URL(localePath(lang, path), Astro.site);
 ---
 <!doctype html>

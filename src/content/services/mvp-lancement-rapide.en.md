@@ -5,7 +5,7 @@ kind: leaf
 pillar: developpement
 order: 5
 title: "MVP & fast launch"
-seoTitle: "MVP development: launch fast, build it properly — MAKRAZ, digital agency"
+seoTitle: "MVP development: launch fast, build it properly"
 lead: "From idea to first user in weeks, without taking on debt you will be repaying in year two."
 included:
   - title: Cutting the scope

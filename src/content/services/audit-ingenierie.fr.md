@@ -5,7 +5,7 @@ kind: leaf
 pillar: direction-technique
 order: 2
 title: "Audit d'ingénierie & plan d'action"
-seoTitle: "Audit technique et plan d'action à 30/60/90 jours — MAKRAZ"
+seoTitle: "Audit technique et plan d'action à 30/60/90 jours — MAKRAZ, agence de communication"
 lead: "Une mission courte et cadrée : à la fin, vous savez exactement où vous en êtes et quoi faire dans quel ordre."
 included:
   - title: Revue du code

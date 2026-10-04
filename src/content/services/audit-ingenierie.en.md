@@ -5,7 +5,7 @@ kind: leaf
 pillar: direction-technique
 order: 2
 title: "Engineering audit & action plan"
-seoTitle: "Engineering audit with a 30/60/90-day plan — MAKRAZ"
+seoTitle: "Engineering audit with a 30/60/90-day plan — MAKRAZ, digital agency"
 lead: "A short, scoped engagement: at the end you know exactly where you stand and what to do in what order."
 included:
   - title: Code review

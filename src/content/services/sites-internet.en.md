@@ -5,7 +5,7 @@ kind: leaf
 pillar: developpement
 order: 3
 title: "Websites"
-seoTitle: "Website design and development in Marrakech — MAKRAZ"
+seoTitle: "Website design and development in Marrakech — MAKRAZ, digital agency"
 lead: "Business and institutional websites: fast, kept current, and built to turn a visit into an enquiry."
 project: aya
 included:

@@ -5,7 +5,7 @@ kind: leaf
 pillar: design
 order: 1
 title: "UX / UI design"
-seoTitle: "UX/UI design d'interfaces et de produits — MAKRAZ"
+seoTitle: "UX/UI design d'interfaces et de produits — MAKRAZ, agence de communication"
 lead: "Recherche utilisateur, wireframes et design visuel — des interfaces ancrées dans votre logique métier, pas dans une tendance."
 included:
   - title: Recherche utilisateur

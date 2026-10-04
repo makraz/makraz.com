@@ -17,7 +17,7 @@ const posts = (await getCollection('blog', (e) => e.data.lang === lang))
 // Arabic copy does the same.
 const monthYear = new Intl.DateTimeFormat(lang === 'ar' ? 'ar-MA' : lang, { month: 'long', year: 'numeric' });
 
-const title = t(lang, 'blog.hero_title') + ' — MAKRAZ';
+const title = t(lang, 'seo.blog_title') + t(lang, 'seo.title_suffix');
 const description = t(lang, 'blog.hero_sub');
 ---
 {/*

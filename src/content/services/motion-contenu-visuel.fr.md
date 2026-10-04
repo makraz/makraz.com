@@ -5,7 +5,7 @@ kind: leaf
 pillar: design
 order: 3
 title: "Motion & contenu visuel"
-seoTitle: "Motion design et contenus visuels de campagne — MAKRAZ"
+seoTitle: "Motion design et contenus visuels de campagne — MAKRAZ, agence de communication"
 lead: "Animations, vidéos courtes et visuels de campagne : du mouvement qui sert la marque plutôt que de la décorer."
 included:
   - title: Motion design

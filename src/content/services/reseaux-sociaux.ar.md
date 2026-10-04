@@ -5,7 +5,7 @@ kind: leaf
 pillar: communication
 order: 3
 title: "الشبكات الاجتماعية"
-seoTitle: "إدارة الشبكات الاجتماعية وبناء المجتمع — MAKRAZ"
+seoTitle: "إدارة الشبكات الاجتماعية وبناء المجتمع — MAKRAZ، وكالة رقمية"
 lead: "تقويمات تحريرية، وتفاعل، ومتابعة: حضور منتظم وقابل للاستمرار، بدل شهر من الحماس."
 project: marrakechphp
 included:

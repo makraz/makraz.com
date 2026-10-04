@@ -5,7 +5,7 @@ kind: leaf
 pillar: communication
 order: 1
 title: "Search engine optimisation (SEO)"
-seoTitle: "SEO for Morocco and international markets — MAKRAZ"
+seoTitle: "SEO for Morocco and international markets — MAKRAZ, digital agency"
 lead: "Technical audit, content and authority: being found by people already looking for what you sell."
 included:
   - title: Technical audit

@@ -5,7 +5,7 @@ kind: leaf
 pillar: developpement
 order: 4
 title: "التجارة الإلكترونية"
-seoTitle: "إنشاء متجر إلكتروني بالمغرب — MAKRAZ"
+seoTitle: "إنشاء متجر إلكتروني بالمغرب — MAKRAZ، وكالة رقمية"
 lead: "متاجر إلكترونية مبنية للبيع ثم للنموّ: الكتالوج، والدفع، والتوصيل، وتتبّع الطلبات."
 project: farblieferant
 included:

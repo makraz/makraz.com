@@ -6,6 +6,7 @@ pillar: developpement
 order: 1
 number: "01"
 title: Development
+seoTitle: "Custom web and mobile development in Morocco — MAKRAZ, digital agency"
 lead: Web and mobile applications, business platforms and e-commerce — built to still be there in five years.
 engagement:
   model: Fixed price when the scope is settled, time-based when the product keeps evolving. Either way, one technical contact accountable for the outcome, and code that belongs entirely to you.

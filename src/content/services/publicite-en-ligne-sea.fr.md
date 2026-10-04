@@ -5,7 +5,7 @@ kind: leaf
 pillar: communication
 order: 2
 title: "Publicité en ligne (SEA)"
-seoTitle: "Publicité en ligne : Google Ads, Meta et TikTok — MAKRAZ"
+seoTitle: "Publicité en ligne : Google Ads, Meta et TikTok — MAKRAZ, agence de communication"
 lead: "Google Ads, Meta, TikTok : ciblage, création et tests — des campagnes jugées sur les demandes, pas sur les clics."
 included:
   - title: Structure de compte

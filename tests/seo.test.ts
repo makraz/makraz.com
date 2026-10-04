@@ -9,6 +9,13 @@ const SEO_KEYS = Object.keys(fr as Record<string, string>).filter((k) => k.start
 const TITLES = SEO_KEYS.filter((k) => k.endsWith('_title'));
 const DESCS = SEO_KEYS.filter((k) => k.endsWith('_desc'));
 
+// Titles end with a brand suffix ("— MAKRAZ, agence de communication") that is allowed to run past
+// what Google displays: it is truncated first, so the length budget applies to the page's own part.
+const pagePart = (title: string, lang: (typeof locales)[number]) => {
+  const suffix = t(lang, 'seo.title_suffix');
+  return title.endsWith(suffix) ? title.slice(0, -suffix.length) : title;
+};
+
 describe('page titles', () => {
   it('are unique across every page and locale', () => {
     // FR and EN once collided on Contact/Portfolio/Services, because those words are spelled the
@@ -27,7 +34,7 @@ describe('page titles', () => {
   it('stay within the length search engines display', () => {
     for (const lang of locales) {
       for (const key of TITLES) {
-        const title = t(lang, key);
+        const title = pagePart(t(lang, key), lang);
         expect(title.length, `${lang}/${key} too short`).toBeGreaterThanOrEqual(15);
         expect(title.length, `${lang}/${key} is ${title.length} chars`).toBeLessThanOrEqual(65);
       }
@@ -58,8 +65,8 @@ describe('meta descriptions', () => {
   });
 });
 
-// Titles that are not built from a seo.* key: the service route composes `seoTitle ?? "<title> —
-// MAKRAZ"` from the content collection, and the blog composes from blog.hero_title. The uniqueness
+// Titles that are not built from a seo.* key: the service route composes `seoTitle ?? "<title>" +
+// seo.title_suffix` from the content collection, and the blog composes from blog.hero_title. The uniqueness
 // check above could not see either, which is how /fr/services/design and /en/services/design
 // shipped with identical titles.
 describe('titles composed outside the seo.* keys', () => {
@@ -71,11 +78,13 @@ describe('titles composed outside the seo.* keys', () => {
     const m = block.match(new RegExp(`^${name}:\\s*(.*)$`, 'm'));
     return m ? m[1].trim().replace(/^"|"$/g, '') : undefined;
   };
+  const langOf = (file: string) => file.split('.').at(-2) as (typeof locales)[number];
+  const titleOf = (file: string) => field(file, 'seoTitle') ?? `${field(file, 'title')}${t(langOf(file), 'seo.title_suffix')}`;
 
   it('gives every service page a title unique across locales', () => {
     const seen = new Map<string, string>();
     for (const file of files) {
-      const title = field(file, 'seoTitle') ?? `${field(file, 'title')} — MAKRAZ`;
+      const title = titleOf(file);
       expect(seen.has(title), `duplicate service title ${JSON.stringify(title)}: ${seen.get(title)} and ${file}`).toBe(false);
       seen.set(title, file);
     }
@@ -83,7 +92,7 @@ describe('titles composed outside the seo.* keys', () => {
 
   it('keeps those titles within the length search engines display', () => {
     for (const file of files) {
-      const title = field(file, 'seoTitle') ?? `${field(file, 'title')} — MAKRAZ`;
+      const title = pagePart(titleOf(file), langOf(file));
       expect(title.length, `${file}: ${title.length} chars`).toBeLessThanOrEqual(65);
     }
   });

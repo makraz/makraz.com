@@ -5,6 +5,7 @@ kind: leaf
 pillar: developpement
 order: 1
 title: "تطبيقات الويب و SaaS"
+seoTitle: "تطوير تطبيقات الويب ومنصات SaaS حسب الطلب — MAKRAZ، وكالة رقمية"
 lead: "منصات أعمال، وبوّابات للعملاء، ومنتجات SaaS: البرمجيات التي تُشغّل نشاطكم يوميًا."
 project: phpmorocco
 included:

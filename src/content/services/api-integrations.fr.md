@@ -5,7 +5,7 @@ kind: leaf
 pillar: developpement
 order: 6
 title: "API & intégrations"
-seoTitle: "Développement d'API et intégrations métier — MAKRAZ"
+seoTitle: "Développement d'API et intégrations métier — MAKRAZ, agence de communication"
 lead: "Faire parler vos outils entre eux : paiement, CRM, ERP, logistique — et des API que d'autres pourront consommer."
 included:
   - title: Conception d'API

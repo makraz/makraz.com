@@ -5,6 +5,7 @@ kind: leaf
 pillar: developpement
 order: 1
 title: "Web apps & SaaS"
+seoTitle: "Custom web application and SaaS development — MAKRAZ, digital agency"
 lead: "Business platforms, client portals and SaaS products: the software that runs your operation day to day."
 project: phpmorocco
 included:

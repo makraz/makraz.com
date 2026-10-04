@@ -5,7 +5,7 @@ kind: leaf
 pillar: direction-technique
 order: 3
 title: "Dedicated product team"
-seoTitle: "Dedicated product team — engineering, design and QA — MAKRAZ"
+seoTitle: "Dedicated product team — engineering, design and QA — MAKRAZ, digital agency"
 lead: "A complete team that owns your product end to end, with one person accountable for the outcome."
 included:
   - title: An assembled team

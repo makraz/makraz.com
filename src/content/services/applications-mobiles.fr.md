@@ -5,6 +5,7 @@ kind: leaf
 pillar: developpement
 order: 2
 title: "Applications mobiles"
+seoTitle: "Développement d'application mobile au Maroc : iOS et Android — MAKRAZ, agence de communication"
 lead: "Applications iOS et Android, du concept à la publication sur les stores — et aux mises à jour qui suivent."
 included:
   - title: Choix de la technologie

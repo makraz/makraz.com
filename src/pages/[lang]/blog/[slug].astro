@@ -15,7 +15,7 @@ const { post } = Astro.props;
 const lang = Astro.params.lang as Locale;
 const { Content } = await render(post);
 ---
-<Base lang={lang} path={`/blog/${post.data.slug}`} title={`${post.data.title} — MAKRAZ`} description={post.data.description} active="blog" ctaPage="article">
+<Base lang={lang} path={`/blog/${post.data.slug}`} title={`${post.data.title}${t(lang, 'seo.title_suffix')}`} description={post.data.description} active="blog" ctaPage="article">
   <article class="mk-container mx-auto max-w-[760px] pb-24 pt-[90px]">
     <a href={localePath(lang, '/blog')} class="text-[14px] font-semibold text-txt-4 hover:text-ink">{t(lang, 'article.back')}</a>
     <div class="mt-9 mb-5 text-[12px] font-semibold uppercase tracking-[.2em] text-txt-4">{t(lang, 'article.a_meta')}</div>

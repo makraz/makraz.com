@@ -5,7 +5,7 @@ kind: leaf
 pillar: direction-technique
 order: 3
 title: "Équipe produit dédiée"
-seoTitle: "Équipe produit dédiée — développement, design et QA — MAKRAZ"
+seoTitle: "Équipe produit dédiée — développement, design et QA — MAKRAZ, agence de communication"
 lead: "Une équipe complète qui prend en charge votre produit de bout en bout, avec un seul responsable du résultat."
 included:
   - title: Une équipe constituée

@@ -5,7 +5,7 @@ kind: leaf
 pillar: direction-technique
 order: 1
 title: "مدير تقني عند الطلب (Fractional CTO)"
-seoTitle: "مدير تقني عند الطلب — قيادة تقنية بدوام جزئي — MAKRAZ"
+seoTitle: "مدير تقني عند الطلب — قيادة تقنية بدوام جزئي — MAKRAZ، وكالة رقمية"
 lead: "قيادة تقنية بدوام جزئي: قرارات معمارية، وأولويات، وتوظيف — دون تعيين مدير تقني بدوام كامل."
 included:
   - title: القرارات المعمارية

@@ -5,7 +5,7 @@ kind: leaf
 pillar: communication
 order: 6
 title: "الاستشارة والمواكبة"
-seoTitle: "استشارة رقمية ومواكبة الفرق — MAKRAZ"
+seoTitle: "استشارة رقمية ومواكبة الفرق — MAKRAZ، وكالة رقمية"
 lead: "نظرة خارجية ذات خبرة: لحسم قرار، أو التحقّق من اتجاه، أو تدريب فرقكم."
 included:
   - title: رأي في قرار

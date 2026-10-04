@@ -5,7 +5,7 @@ kind: leaf
 pillar: communication
 order: 6
 title: "Advisory & coaching"
-seoTitle: "Digital advisory and team coaching — MAKRAZ"
+seoTitle: "Digital advisory and team coaching — MAKRAZ, digital agency"
 lead: "An experienced outside view: settle a decision, sanity-check a direction, or train your teams."
 included:
   - title: A view on a decision

@@ -5,7 +5,7 @@ kind: leaf
 pillar: communication
 order: 4
 title: "Digital strategy"
-seoTitle: "Digital strategy and brand positioning — MAKRAZ"
+seoTitle: "Digital strategy and brand positioning — MAKRAZ, digital agency"
 lead: "Positioning, brand voice and communication planning: decide before producing, or produce nothing."
 included:
   - title: Positioning

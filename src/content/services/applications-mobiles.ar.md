@@ -5,6 +5,7 @@ kind: leaf
 pillar: developpement
 order: 2
 title: "تطبيقات الهاتف"
+seoTitle: "تطوير تطبيقات الهاتف بالمغرب: iOS وAndroid — MAKRAZ، وكالة رقمية"
 lead: "تطبيقات iOS وأندرويد، من الفكرة إلى النشر على المتاجر — وإلى التحديثات التي تليه."
 included:
   - title: اختيار التقنية

@@ -5,7 +5,7 @@ kind: leaf
 pillar: developpement
 order: 7
 title: "DevOps & Cloud"
-seoTitle: "DevOps, cloud et déploiement continu — MAKRAZ"
+seoTitle: "DevOps, cloud et déploiement continu — MAKRAZ, agence de communication"
 lead: "Des déploiements que n'importe qui dans l'équipe peut lancer, et une infrastructure dont on connaît le coût et l'état."
 included:
   - title: Pipelines de livraison

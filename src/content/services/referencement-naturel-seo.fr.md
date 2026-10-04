@@ -5,7 +5,7 @@ kind: leaf
 pillar: communication
 order: 1
 title: "Référencement naturel (SEO)"
-seoTitle: "Référencement naturel (SEO) au Maroc — MAKRAZ"
+seoTitle: "Référencement naturel (SEO) au Maroc — MAKRAZ, agence de communication"
 lead: "Audit technique, contenu et autorité : être trouvé par ceux qui cherchent déjà ce que vous vendez."
 included:
   - title: Audit technique

@@ -5,7 +5,7 @@ kind: leaf
 pillar: communication
 order: 5
 title: "Content & copywriting"
-seoTitle: "Web copywriting and trilingual content — MAKRAZ"
+seoTitle: "Web copywriting and trilingual content — MAKRAZ, digital agency"
 lead: "Copy, articles and newsletters — in French, Arabic and English, written to be read as much as to be found."
 included:
   - title: Website copy

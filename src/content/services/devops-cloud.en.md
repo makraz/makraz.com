@@ -5,7 +5,7 @@ kind: leaf
 pillar: developpement
 order: 7
 title: "DevOps & Cloud"
-seoTitle: "DevOps, cloud and continuous delivery — MAKRAZ"
+seoTitle: "DevOps, cloud and continuous delivery — MAKRAZ, digital agency"
 lead: "Deployments anyone on the team can run, and infrastructure whose cost and state are actually known."
 included:
   - title: Delivery pipelines

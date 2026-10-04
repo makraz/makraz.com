@@ -6,6 +6,7 @@ pillar: direction-technique
 order: 4
 number: "04"
 title: Technical leadership & teams
+seoTitle: "Outsourced technical leadership and dedicated teams — MAKRAZ, digital agency"
 lead: For when what you are missing is not developers, but someone accountable for the technology.
 engagement:
   model: A short, scoped audit to establish where things stand, then a recurring part-time presence, or a dedicated team when the work also has to get built. No full-time hire, no equity dilution.

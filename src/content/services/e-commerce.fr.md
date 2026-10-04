@@ -5,7 +5,7 @@ kind: leaf
 pillar: developpement
 order: 4
 title: "E-commerce"
-seoTitle: "Création de boutique en ligne au Maroc — MAKRAZ"
+seoTitle: "Création de boutique en ligne au Maroc — MAKRAZ, agence de communication"
 lead: "Boutiques en ligne construites pour vendre puis pour grandir : catalogue, paiement, livraison et suivi des commandes."
 project: farblieferant
 included:

@@ -5,7 +5,7 @@ kind: leaf
 pillar: developpement
 order: 7
 title: "DevOps والحوسبة السحابية"
-seoTitle: "DevOps والسحابة والتسليم المستمر — MAKRAZ"
+seoTitle: "DevOps والسحابة والتسليم المستمر — MAKRAZ، وكالة رقمية"
 lead: "نشر يستطيع أي فرد في الفريق تشغيله، وبنية تحتية تُعرَف كلفتها وحالتها فعلًا."
 included:
   - title: خطوط التسليم

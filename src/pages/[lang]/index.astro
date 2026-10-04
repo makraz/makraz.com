@@ -41,7 +41,13 @@ const capabilities = [
     description: t(lang, 'seo.home_desc'),
     email: 'contact@makraz.com',
     telephone: '+212661764392',
-    address: { '@type': 'PostalAddress', addressLocality: 'Marrakech', addressCountry: 'MA', streetAddress: "Centre d'affaires Itrane" },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: "Centre d'affaires Itrane, Bureau B52, 5e étage, Bab Doukkala",
+      addressLocality: 'Marrakech',
+      addressCountry: 'MA',
+    },
+    identifier: { '@type': 'PropertyValue', propertyID: 'RC', value: '111683' },
     areaServed: [
       { '@type': 'Country', name: 'Morocco' },
       { '@type': 'Place', name: 'Europe' },

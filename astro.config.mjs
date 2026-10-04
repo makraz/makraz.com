@@ -14,7 +14,7 @@ const LOCALES = ['fr', 'en', 'ar'];
  * whole-file — otherwise one translation edit marks every URL as changed on the same timestamp,
  * which is no more informative than stamping them all with the build time.
  * @param {string} url
- * @returns {{ files: string[], keyspace?: { file: string, prefix: string } }}
+ * @returns {{ files: string[], keyspace?: { file: string, prefixes: string[] } }}
  */
 function sourcesFor(url) {
   const path = new URL(url).pathname.replace(/\/$/, '');
@@ -25,12 +25,16 @@ function sourcesFor(url) {
   const files = [];
   /** @type {string | undefined} */
   let prefix;
+  // The page's <title>/<meta description> live in seo.<page>_* keys, outside its copy namespace.
+  /** @type {string | undefined} */
+  let seoPrefix;
 
-  if (rest === '') { files.push('src/pages/[lang]/index.astro'); prefix = 'home.'; }
+  if (rest === '') { files.push('src/pages/[lang]/index.astro'); prefix = 'home.'; seoPrefix = 'seo.home_'; }
   else if (/^\/blog\/[^/]+$/.test(rest)) files.push(`src/content/blog/${slug}.${lang}.md`, 'src/pages/[lang]/blog/[slug].astro');
   else if (/^\/portfolio\/[^/]+$/.test(rest)) {
     files.push(`src/pages/[lang]/portfolio/${slug}.astro`, `src/content/case-studies/${slug}.${lang}.md`);
     prefix = `case_${slug}.`;
+    seoPrefix = `seo.case_${slug}_`;
   }
   // Service pages are one dynamic route over a content collection, so the page's own source is the
   // markdown file, not a per-slug .astro. Without this branch they shipped with no lastmod at all.
@@ -39,11 +43,14 @@ function sourcesFor(url) {
   } else {
     files.push(`src/pages/[lang]${rest}.astro`);
     prefix = { '/services': 'services.', '/portfolio': 'portfolio.', '/a-propos': 'about.', '/contact': 'contact.', '/blog': 'blog.', '/mentions-legales': 'legal.' }[rest];
+    if (prefix) seoPrefix = `seo.${prefix.replace(/\.$/, '')}_`;
   }
 
   return {
     files: files.filter((f) => existsSync(f)),
-    keyspace: prefix ? { file: `src/i18n/${lang}.json`, prefix } : undefined,
+    keyspace: prefix
+      ? { file: `src/i18n/${lang}.json`, prefixes: [prefix, ...(seoPrefix ? [seoPrefix] : [])] }
+      : undefined,
   };
 }
 
@@ -76,10 +83,12 @@ function lastmodFor(url) {
     if (out && (!newest || out > newest)) newest = out;
   }
   if (keyspace) {
-    // -G matches commits whose diff touched a line containing this key prefix, so a page's date
-    // moves when its own copy changed, not when any copy anywhere changed.
-    const out = commitDate([`-G"${keyspace.prefix.replace('.', '\\.')}`, '--', keyspace.file]);
-    if (out && (!newest || out > newest)) newest = out;
+    for (const prefix of keyspace.prefixes) {
+      // -G matches commits whose diff touched a line containing this key prefix, so a page's date
+      // moves when its own copy or its title/description changed, not when any copy anywhere changed.
+      const out = commitDate([`-G"${prefix.replace('.', '\\.')}`, '--', keyspace.file]);
+      if (out && (!newest || out > newest)) newest = out;
+    }
   }
 
   lastmodCache.set(url, newest);

@@ -97,7 +97,7 @@ const actions = [
             <a
               href={a.href}
               class:list={[
-                'btn w-full flex-col gap-0 px-5 py-[clamp(9px,1.8dvh,16px)] text-[clamp(15px,2.2dvh,16px)] leading-[1.25] no-underline',
+                'btn min-h-0 w-full flex-col gap-0 px-5 py-[clamp(9px,1.8dvh,16px)] text-[clamp(15px,2.2dvh,16px)] leading-[1.25] no-underline',
                 a.primary ? 'btn-primary' : 'btn-ghost',
               ]}
             >
@@ -116,7 +116,7 @@ const actions = [
           <a
             href="/makraz.vcf"
             download="makraz.vcf"
-            class="btn btn-ghost w-full px-5 py-[clamp(9px,1.8dvh,16px)] text-[clamp(15px,2.2dvh,16px)] leading-[1.25] no-underline"
+            class="btn btn-ghost min-h-0 w-full px-5 py-[clamp(9px,1.8dvh,16px)] text-[clamp(15px,2.2dvh,16px)] leading-[1.25] no-underline"
           >
             {t(lang, 'mycard.save')}
           </a>

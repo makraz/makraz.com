@@ -38,10 +38,10 @@ const description = t(lang, 'blog.hero_sub');
 {BLOG_MAINTENANCE ? <BlogMaintenance lang={lang} path="/blog" /> : (
 <Base lang={lang} path="/blog" title={title} description={description} active="blog" ctaPage="blog" noindex>
   <!-- Hero -->
-  <section class="mk-container pb-[72px] pt-[100px]">
-    <Kicker class="mb-7">{t(lang, 'blog.kicker_page')}</Kicker>
+  <section class="mk-container pb-16 pt-16">
+    <Kicker class="mb-3">{t(lang, 'blog.kicker_page')}</Kicker>
     <h1 class="text-h1 m-0 max-w-[16ch]">{t(lang, 'blog.hero_title')}</h1>
-    <p class="mt-[30px] max-w-[56ch] text-[19px] leading-[1.6] text-txt-2">{t(lang, 'blog.hero_sub')}</p>
+    <p class="mt-4 max-w-[56ch] text-[16px] leading-[1.6] text-txt-2">{t(lang, 'blog.hero_sub')}</p>
   </section>
 
   <!--
@@ -50,18 +50,18 @@ const description = t(lang, 'blog.hero_sub');
     headlines went nowhere when clicked.
   -->
   <section class="border-t border-line bg-card">
-    <div class="mk-container mk-section grid grid-cols-3 gap-7 max-[900px]:grid-cols-1 max-[600px]:grid-cols-1">
+    <div class="mk-container mk-section grid grid-cols-3 gap-4 max-[900px]:grid-cols-1 max-[600px]:grid-cols-1">
       {posts.map((entry) => (
         <a
           href={localePath(lang, `/blog/${entry.data.slug}`)}
-          class="flex flex-col gap-[18px] rounded-card border border-line bg-paper p-6 hover:border-ink"
+          class="mk-float flex flex-col gap-4 rounded-card border border-line bg-white p-6"
         >
           <ImagePlaceholder ratio="16/10" label={entry.data.category} radius="media" />
           <div class="flex flex-col gap-2.5">
             <div class="text-[12px] font-semibold uppercase tracking-[.18em] text-txt-4">
               {entry.data.category} — {monthYear.format(entry.data.date)}
             </div>
-            <div class="text-[21px] font-bold leading-[1.25] tracking-[-0.01em]">{entry.data.title}</div>
+            <div class="text-[16px] font-bold leading-[1.25] tracking-[-0.01em]">{entry.data.title}</div>
             <p class="m-0 text-[14px] leading-[1.6] text-txt-2">{entry.data.description}</p>
             <span class="mt-1.5 text-[14px] font-semibold">{t(lang, 'blog.read_more')}</span>
           </div>

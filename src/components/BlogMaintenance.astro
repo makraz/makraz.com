@@ -9,10 +9,10 @@ interface Props { lang: Locale; path: string }
 const { lang, path } = Astro.props;
 ---
 <Base lang={lang} path={path} title={t(lang, 'seo.blog_maint_title')} description={t(lang, 'blog.maint_body')} active={null} ctaPage="blog">
-  <section class="mk-container pb-[110px] pt-[100px]">
-    <Kicker class="mb-7">{t(lang, 'blog.kicker_page')}</Kicker>
-    <h1 class="text-h1 m-0 max-w-[16ch]">{t(lang, 'blog.maint_title')}</h1>
-    <p class="mt-[30px] max-w-[56ch] text-[19px] leading-[1.6] text-txt-2">{t(lang, 'blog.maint_body')}</p>
-    <a href={localePath(lang, '/services')} class="btn btn-primary mt-11">{t(lang, 'blog.maint_cta')}</a>
+  <section class="mk-container py-16">
+    <Kicker class="mb-3">{t(lang, 'blog.kicker_page')}</Kicker>
+    <h1 class="text-h1 m-0 max-w-[24ch]">{t(lang, 'blog.maint_title')}</h1>
+    <p class="mt-4 max-w-[56ch] text-[16px] leading-[1.5] text-txt-2">{t(lang, 'blog.maint_body')}</p>
+    <a href={localePath(lang, '/services')} class="btn btn-primary mt-8">{t(lang, 'blog.maint_cta')}</a>
   </section>
 </Base>

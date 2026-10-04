@@ -22,12 +22,12 @@ const description = t(lang, 'seo.case_farblieferant_desc');
 ---
 <Base lang={lang} path="/portfolio/farblieferant" title={title} description={description} active="portfolio" ctaPage="case_farblieferant">
   <!-- Hero -->
-  <section class="mk-container pb-14 pt-[90px]">
+  <section class="mk-container pb-14 pt-16">
     <a href={localePath(lang, '/portfolio')} class="text-[14px] font-semibold text-txt-4 hover:text-ink">{t(lang, 'case_farblieferant.back')}</a>
     <Kicker class="mb-5 mt-9">{entry.data.kicker}</Kicker>
     <h1 class="text-h1 m-0">{entry.data.project}</h1>
-    <p class="mt-[26px] max-w-[58ch] text-[19px] leading-[1.6] text-txt-2">{t(lang, 'case_farblieferant.sub')}</p>
-    <div class="mt-12 grid grid-cols-4 gap-7 border-t border-line pt-7 max-[900px]:grid-cols-1">
+    <p class="mt-4 max-w-[58ch] text-[16px] leading-[1.6] text-txt-2">{t(lang, 'case_farblieferant.sub')}</p>
+    <div class="mt-12 grid grid-cols-4 gap-4 border-t border-line pt-7 max-[900px]:grid-cols-1">
       <div>
         <div class="mb-2 text-[12px] font-semibold uppercase tracking-[.2em] text-txt-4">{t(lang, 'case_farblieferant.m_client')}</div>
         <div class="text-[16px] font-semibold">{entry.data.project}</div>
@@ -60,7 +60,7 @@ const description = t(lang, 'seo.case_farblieferant_desc');
 
   <!-- Gallery -->
   <section class="mk-container pb-24">
-    <div class="grid grid-cols-2 gap-7 max-[900px]:grid-cols-1">
+    <div class="grid grid-cols-2 gap-4 max-[900px]:grid-cols-1">
       <Screenshot src={fbCatalogue} alt={t(lang, 'img.fb_catalogue')} ratio="4/3" radius="media" sizes="(max-width: 900px) 100vw, 574px" />
       <Screenshot src={fbProduct} alt={t(lang, 'img.fb_product')} ratio="4/3" radius="media" sizes="(max-width: 900px) 100vw, 574px" />
     </div>

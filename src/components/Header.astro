@@ -14,44 +14,44 @@ const links = [
   ['contact', '/contact', 'common.nav_contact'],
 ] as const;
 ---
-<header class="sticky top-0 z-50 border-b border-line bg-[rgba(253,253,253,.92)] backdrop-blur-[12px]">
-  <div class="mk-container flex h-[72px] items-center justify-between gap-6">
+<header class="sticky top-0 z-50 border-b border-line bg-white">
+  <div class="mk-container flex h-[80px] items-center justify-between gap-6">
     <a href={localePath(lang, '/')} class="flex items-center gap-3">
       <img src={logoBlack.src} alt="MAKRAZ" class="h-[34px] w-[34px] object-contain" />
       <span class="text-[16px] font-bold tracking-[.18em]">MAKRAZ</span>
     </a>
-    <nav class="mk-nav flex items-center gap-9 text-[15px] font-medium max-[900px]:hidden">
+    <nav class="mk-nav flex items-center gap-8 text-[16px] font-semibold max-[900px]:hidden">
       {links.map(([key, href, label]) => (
         <a
           href={localePath(lang, href)}
           class:list={[
-            'whitespace-nowrap py-1',
-            active === key ? 'border-b-2 border-ink' : 'text-txt-3 hover:text-ink',
+            'whitespace-nowrap border-b-2 py-2',
+            active === key ? 'border-ink text-ink' : 'border-transparent text-txt-3 hover:text-ink',
           ]}
         >{t(lang, label)}</a>
       ))}
     </nav>
-    <div class="flex items-center gap-[18px]">
+    <div class="flex items-center gap-3">
       <a
         href={localePath(nextLocale(lang), path)}
-        class="rounded-pill border border-line-mid px-[14px] py-[7px] text-[13px] font-semibold tracking-[.06em] hover:border-ink"
+        class="inline-flex h-10 min-w-10 items-center justify-center rounded-pill border border-line-mid px-3 text-[14px] font-semibold hover:bg-surface-soft"
       >{t(lang, 'common.toggle')}</a>
       <button
         id="mk-burger"
         aria-label="Menu"
         aria-expanded="false"
         aria-controls="mk-mobile-menu"
-        class="hidden rounded-pill border border-line-mid px-[14px] py-[7px] text-[15px] leading-none max-[900px]:inline-flex"
+        class="hidden h-10 w-10 items-center justify-center rounded-pill border border-line-mid text-[16px] leading-none hover:bg-surface-soft max-[900px]:inline-flex"
       >☰</button>
       <a
         href={localePath(lang, '/contact')}
-        class="btn bg-ink px-[22px] py-[11px] text-[14px] text-white hover:bg-ink-soft max-[900px]:hidden"
+        class="btn min-h-10 bg-ink px-4 py-[10px] text-[14px] text-white hover:bg-ink-soft max-[900px]:hidden"
       >{t(lang, 'common.nav_cta')}</a>
     </div>
   </div>
-  <nav id="mk-mobile-menu" hidden class="flex flex-col border-t border-line px-8 pb-4 pt-2 text-[16px] font-semibold">
+  <nav id="mk-mobile-menu" hidden class="flex flex-col border-t border-line px-6 pb-4 pt-2 text-[16px] font-semibold">
     {links.map(([, href, label]) => (
-      <a href={localePath(lang, href)} class="py-3">{t(lang, label)}</a>
+      <a href={localePath(lang, href)} class="flex min-h-12 items-center">{t(lang, label)}</a>
     ))}
   </nav>
 </header>

@@ -1,24 +1,36 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-ink: #0a0a0a;
-  --color-ink-soft: #2e2e2e;
-  --color-paper: #fdfdfd;
+  /* Palette and shape follow DESIGN.md's principles on MAKRAZ's own black-and-white identity: one
+     near-black ink (never pure black), a body grey for running text, a muted grey for secondary
+     text, and two hairline greys. txt-4 is darker than DESIGN.md's #929292 so that small labels
+     still pass WCAG AA contrast on white. */
+  --color-ink: #222222;
+  --color-ink-soft: #3f3f3f;
+  --color-paper: #ffffff;
   --color-card: #ffffff;
-  --color-txt-2: #555555;
-  --color-txt-3: #6b6b6b;
-  --color-txt-4: #8a8a8a;
-  --color-line: #ececec;
-  --color-line-mid: #d8d8d8;
+  --color-surface-soft: #f7f7f7;
+  --color-surface-strong: #f2f2f2;
+  --color-txt-2: #3f3f3f;
+  --color-txt-3: #6a6a6a;
+  --color-txt-4: #717171;
+  --color-line: #ebebeb;
+  --color-line-mid: #dddddd;
+  --color-line-strong: #c1c1c1;
   --color-line-dark: #262626;
   --color-ondark-1: #d4d4d4;
   --color-ondark-2: #a3a3a3;
   --color-ondark-3: #737373;
 
-  --radius-pill: 999px;
-  --radius-card: 20px;
-  --radius-media: 24px;
-  --radius-input: 12px;
+  /* Soft everywhere, graded by size: controls 8px, cards and media 14px, chips fully round. */
+  --radius-pill: 9999px;
+  --radius-card: 14px;
+  --radius-media: 14px;
+  --radius-input: 8px;
+  --radius-control: 8px;
+
+  /* The one elevation tier: hover-floated cards and open menus only. Everything else is flat. */
+  --shadow-float: 0 0 0 1px rgba(0, 0, 0, .02), 0 2px 6px rgba(0, 0, 0, .04), 0 4px 8px rgba(0, 0, 0, .1);
 
   --font-sans: 'Instrument Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-arabic: 'IBM Plex Sans Arabic', 'Instrument Sans', sans-serif;
@@ -44,19 +56,36 @@
 }
 
 @layer components {
-  .mk-container { max-width: 1240px; margin-inline: auto; padding-inline: 32px; }
-  .mk-section { padding-block: 96px; }
+  .mk-container { max-width: 1280px; margin-inline: auto; padding-inline: 32px; }
+  @media (max-width: 743px) { .mk-container { padding-inline: 24px; } }
+  .mk-section { padding-block: 64px; }
 
-  .text-h1 { font-size: clamp(44px, 6.5vw, 88px); line-height: 1.02; letter-spacing: -0.035em; font-weight: 700; }
-  .text-h2 { font-size: clamp(34px, 3.6vw, 50px); line-height: 1.08; letter-spacing: -0.03em; font-weight: 700; }
-  .text-h2-sub { font-size: clamp(30px, 3vw, 42px); line-height: 1.1; letter-spacing: -0.03em; font-weight: 700; }
-  .text-kicker { font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--color-txt-4); font-weight: 600; }
+  /* DESIGN.md's modest scale: weight and whitespace carry hierarchy, not size. */
+  .text-h1 { font-size: 28px; line-height: 1.25; letter-spacing: -0.01em; font-weight: 700; }
+  .text-h2 { font-size: 22px; line-height: 1.25; letter-spacing: -0.02em; font-weight: 600; }
+  .text-h2-sub { font-size: 20px; line-height: 1.2; letter-spacing: -0.01em; font-weight: 600; }
+  /* A caption in sentence case, not a tracked-out uppercase eyebrow. */
+  .text-kicker { font-size: 14px; line-height: 1.3; color: var(--color-txt-3); font-weight: 500; }
 
-  .btn { display: inline-flex; align-items: center; justify-content: center; border-radius: var(--radius-pill); font-weight: 600; text-decoration: none; cursor: pointer; transition: background-color .15s, border-color .15s, color .15s; }
-  .btn-primary { background: var(--color-ink); color: #ffffff; padding: 17px 32px; font-size: 16px; }
+  /* 48px controls with an 8px radius. Press states change colour only: no movement, no shadow. */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; border-radius: var(--radius-control); font-size: 16px; font-weight: 500; line-height: 1.25; text-decoration: none; cursor: pointer; transition: background-color .15s, border-color .15s, color .15s; }
+  .btn:focus-visible { outline: 2px solid var(--color-ink); outline-offset: 2px; }
+  .btn-primary { background: var(--color-ink); color: #ffffff; padding: 14px 24px; }
   .btn-primary:hover { background: var(--color-ink-soft); color: #ffffff; }
-  .btn-ghost { border: 1px solid var(--color-line-mid); color: var(--color-ink); padding: 16px 31px; font-size: 16px; }
-  .btn-ghost:hover { border-color: var(--color-ink); }
-  .btn-ondark { background: #ffffff; color: var(--color-ink); padding: 17px 32px; font-size: 16px; }
-  .btn-ondark:hover { background: #e2e2e2; }
+  .btn-primary:active { background: #000000; }
+  .btn-ghost { border: 1px solid var(--color-ink); color: var(--color-ink); padding: 13px 23px; background: #ffffff; }
+  .btn-ghost:hover { background: var(--color-surface-soft); }
+  .btn-ondark { background: #ffffff; color: var(--color-ink); padding: 14px 24px; }
+  .btn-ondark:hover { background: var(--color-surface-strong); }
+  .btn-ondark:focus-visible { outline-color: #ffffff; }
+
+  /* The one shadow tier, for things that float on hover. */
+  .mk-float { transition: box-shadow .2s, border-color .2s; }
+  .mk-float:hover { box-shadow: var(--shadow-float); border-color: transparent; }
+
+  /* Form fields: 56px, hairline outline, a 2px ink outline on focus with no glow. The inset ring
+     makes the outline 2px without shifting layout. */
+  .mk-field { min-height: 56px; width: 100%; border: 1px solid var(--color-line-mid); border-radius: var(--radius-input); background: #ffffff; padding: 14px 12px; font-size: 16px; line-height: 1.5; color: var(--color-ink); }
+  .mk-field:focus { outline: none; border-color: var(--color-ink); box-shadow: inset 0 0 0 1px var(--color-ink); }
+  .mk-field-label { display: grid; gap: 8px; font-size: 14px; font-weight: 500; color: var(--color-txt-2); }
 }

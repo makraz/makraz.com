@@ -14,9 +14,9 @@ const { lang, slug, title, lead, number } = Astro.props;
 ---
 <a
   href={localePath(lang, `/services/${slug}`)}
-  class="flex flex-col gap-3 rounded-card border border-line bg-paper p-6 no-underline transition-colors hover:border-ink"
+  class="mk-float flex flex-col gap-2 rounded-card border border-line bg-white p-6 no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
 >
-  {number && <div class="text-[13px] font-semibold text-txt-4">{number}</div>}
-  <h3 class="m-0 text-[20px] font-bold leading-[1.2] tracking-[-0.01em]">{title}</h3>
-  <p class="m-0 text-[14px] leading-[1.6] text-txt-2">{lead}</p>
+  {number && <div class="text-[13px] font-medium text-txt-4">{number}</div>}
+  <h3 class="m-0 text-[16px] font-semibold leading-[1.25]">{title}</h3>
+  <p class="m-0 text-[14px] leading-[1.43] text-txt-3">{lead}</p>
 </a>

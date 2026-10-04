@@ -65,8 +65,8 @@ const capabilities = [
   })} />
 
   <!-- Hero -->
-  <section class="mk-container pb-[90px] pt-[110px]">
-    <Kicker class="mb-7">{t(lang, 'home.hero_kicker')}</Kicker>
+  <section class="mk-container pb-16 pt-16">
+    <Kicker class="mb-3">{t(lang, 'home.hero_kicker')}</Kicker>
     {/*
       Three beats, one per line — that rhythm is the headline, so the breaks are authored with `|`
       in the i18n string rather than left to the measure, which split EN mid-beat ("Build it.
@@ -74,7 +74,7 @@ const capabilities = [
       The service lines the headline used to name now live in the sub below.
     */}
     <h1 class="text-h1 m-0 max-w-[16ch]">{t(lang, 'home.hero_title').split('|').map((beat, i) => <>{i > 0 && <br />}{beat}</>)}</h1>
-    <p class="mb-11 mt-7 max-w-[62ch] text-[clamp(17px,1.4vw,19px)] leading-[1.65] text-txt-2">{t(lang, 'home.hero_sub')}</p>
+    <p class="mb-8 mt-7 max-w-[62ch] text-[16px] leading-[1.65] text-txt-2">{t(lang, 'home.hero_sub')}</p>
     <div class="flex flex-wrap items-center gap-4">
       <a href={localePath(lang, '/contact')} class="btn btn-primary">{t(lang, 'home.hero_cta1')}</a>
       <a href={localePath(lang, '/portfolio')} class="btn btn-ghost">{t(lang, 'home.hero_cta2')}</a>
@@ -84,32 +84,32 @@ const capabilities = [
   <!-- Process -->
   <section class="border-t border-line">
     <div class="mk-container mk-section">
-      <Kicker class="mb-5">{t(lang, 'home.process_kicker')}</Kicker>
-      <h2 class="text-h2 m-0 mb-14 max-w-[22ch]">{t(lang, 'home.process_title')}</h2>
+      <Kicker class="mb-3">{t(lang, 'home.process_kicker')}</Kicker>
+      <h2 class="text-h2 m-0 mb-8 max-w-[22ch]">{t(lang, 'home.process_title')}</h2>
       <div class="grid grid-cols-5 gap-6 max-[900px]:grid-cols-2 max-[560px]:grid-cols-1">
         <div class="border-t-2 border-ink pt-6">
           <div class="mb-3 text-[13px] font-semibold text-txt-4">01</div>
-          <div class="mb-2.5 text-[19px] font-bold">{t(lang, 'home.s1_t')}</div>
+          <div class="mb-2.5 text-[16px] font-bold">{t(lang, 'home.s1_t')}</div>
           <p class="m-0 text-[14px] leading-[1.6] text-txt-2">{t(lang, 'home.s1_d')}</p>
         </div>
         <div class="border-t-2 border-ink pt-6">
           <div class="mb-3 text-[13px] font-semibold text-txt-4">02</div>
-          <div class="mb-2.5 text-[19px] font-bold">{t(lang, 'home.s2_t')}</div>
+          <div class="mb-2.5 text-[16px] font-bold">{t(lang, 'home.s2_t')}</div>
           <p class="m-0 text-[14px] leading-[1.6] text-txt-2">{t(lang, 'home.s2_d')}</p>
         </div>
         <div class="border-t-2 border-ink pt-6">
           <div class="mb-3 text-[13px] font-semibold text-txt-4">03</div>
-          <div class="mb-2.5 text-[19px] font-bold">{t(lang, 'home.s3_t')}</div>
+          <div class="mb-2.5 text-[16px] font-bold">{t(lang, 'home.s3_t')}</div>
           <p class="m-0 text-[14px] leading-[1.6] text-txt-2">{t(lang, 'home.s3_d')}</p>
         </div>
         <div class="border-t-2 border-ink pt-6">
           <div class="mb-3 text-[13px] font-semibold text-txt-4">04</div>
-          <div class="mb-2.5 text-[19px] font-bold">{t(lang, 'home.s4_t')}</div>
+          <div class="mb-2.5 text-[16px] font-bold">{t(lang, 'home.s4_t')}</div>
           <p class="m-0 text-[14px] leading-[1.6] text-txt-2">{t(lang, 'home.s4_d')}</p>
         </div>
         <div class="border-t-2 border-ink pt-6">
           <div class="mb-3 text-[13px] font-semibold text-txt-4">05</div>
-          <div class="mb-2.5 text-[19px] font-bold">{t(lang, 'home.s5_t')}</div>
+          <div class="mb-2.5 text-[16px] font-bold">{t(lang, 'home.s5_t')}</div>
           <p class="m-0 text-[14px] leading-[1.6] text-txt-2">{t(lang, 'home.s5_d')}</p>
         </div>
       </div>
@@ -119,12 +119,12 @@ const capabilities = [
   <!-- Pillars -->
   <section class="border-t border-line bg-card">
     <div class="mk-container mk-section">
-      <Kicker class="mb-5">{t(lang, 'home.pillars_kicker')}</Kicker>
-      <h2 class="text-h2 m-0 mb-14">{t(lang, 'home.pillars_title')}</h2>
-      <div class="grid grid-cols-2 gap-7 max-[900px]:grid-cols-1">
-        <div class="flex flex-col gap-5 rounded-card border border-line bg-paper p-[40px_36px] hover:border-ink max-[900px]:p-[28px_22px]">
+      <Kicker class="mb-3">{t(lang, 'home.pillars_kicker')}</Kicker>
+      <h2 class="text-h2 m-0 mb-8">{t(lang, 'home.pillars_title')}</h2>
+      <div class="grid grid-cols-2 gap-4 max-[900px]:grid-cols-1">
+        <div class="flex flex-col gap-5 rounded-card border border-line bg-paper p-6">
           <div class="text-[13px] font-semibold text-txt-4">01</div>
-          <h3 class="m-0 text-[26px] font-bold tracking-[-0.02em]">{t(lang, 'home.p1_title')}</h3>
+          <h3 class="m-0 text-[20px] font-semibold tracking-[-0.01em]">{t(lang, 'home.p1_title')}</h3>
           <p class="m-0 text-[15px] leading-[1.6] text-txt-2">{t(lang, 'home.p1_desc')}</p>
           <div class="mt-auto flex flex-col gap-2.5 text-[14px] text-ink">
             <span>{t(lang, 'home.p1_i1')}</span>
@@ -132,9 +132,9 @@ const capabilities = [
             <span>{t(lang, 'home.p1_i3')}</span>
           </div>
         </div>
-        <div class="flex flex-col gap-5 rounded-card border border-line bg-paper p-[40px_36px] hover:border-ink max-[900px]:p-[28px_22px]">
+        <div class="flex flex-col gap-5 rounded-card border border-line bg-paper p-6">
           <div class="text-[13px] font-semibold text-txt-4">02</div>
-          <h3 class="m-0 text-[26px] font-bold tracking-[-0.02em]">{t(lang, 'home.p2_title')}</h3>
+          <h3 class="m-0 text-[20px] font-semibold tracking-[-0.01em]">{t(lang, 'home.p2_title')}</h3>
           <p class="m-0 text-[15px] leading-[1.6] text-txt-2">{t(lang, 'home.p2_desc')}</p>
           <div class="mt-auto flex flex-col gap-2.5 text-[14px] text-ink">
             <span>{t(lang, 'home.p2_i1')}</span>
@@ -142,9 +142,9 @@ const capabilities = [
             <span>{t(lang, 'home.p2_i3')}</span>
           </div>
         </div>
-        <div class="flex flex-col gap-5 rounded-card border border-line bg-paper p-[40px_36px] hover:border-ink max-[900px]:p-[28px_22px]">
+        <div class="flex flex-col gap-5 rounded-card border border-line bg-paper p-6">
           <div class="text-[13px] font-semibold text-txt-4">03</div>
-          <h3 class="m-0 text-[26px] font-bold tracking-[-0.02em]">{t(lang, 'home.p3_title')}</h3>
+          <h3 class="m-0 text-[20px] font-semibold tracking-[-0.01em]">{t(lang, 'home.p3_title')}</h3>
           <p class="m-0 text-[15px] leading-[1.6] text-txt-2">{t(lang, 'home.p3_desc')}</p>
           <div class="mt-auto flex flex-col gap-2.5 text-[14px] text-ink">
             <span>{t(lang, 'home.p3_i1')}</span>
@@ -152,9 +152,9 @@ const capabilities = [
             <span>{t(lang, 'home.p3_i3')}</span>
           </div>
         </div>
-        <div class="flex flex-col gap-5 rounded-card border border-line bg-paper p-[40px_36px] hover:border-ink max-[900px]:p-[28px_22px]">
+        <div class="flex flex-col gap-5 rounded-card border border-line bg-paper p-6">
           <div class="text-[13px] font-semibold text-txt-4">04</div>
-          <h3 class="m-0 text-[26px] font-bold tracking-[-0.02em]">{t(lang, 'home.p4_title')}</h3>
+          <h3 class="m-0 text-[20px] font-semibold tracking-[-0.01em]">{t(lang, 'home.p4_title')}</h3>
           <p class="m-0 text-[15px] leading-[1.6] text-txt-2">{t(lang, 'home.p4_desc')}</p>
           <div class="mt-auto flex flex-col gap-2.5 text-[14px] text-ink">
             <span>{t(lang, 'home.p4_i1')}</span>
@@ -172,34 +172,34 @@ const capabilities = [
   <!-- Selected work -->
   <section class="border-t border-line">
     <div class="mk-container mk-section">
-      <div class="mb-14 flex flex-wrap items-end justify-between gap-6">
+      <div class="mb-8 flex flex-wrap items-end justify-between gap-6">
         <div>
-          <Kicker class="mb-5">{t(lang, 'home.work_kicker')}</Kicker>
+          <Kicker class="mb-3">{t(lang, 'home.work_kicker')}</Kicker>
           <h2 class="text-h2 m-0">{t(lang, 'home.work_title')}</h2>
         </div>
         <a href={localePath(lang, '/portfolio')} class="whitespace-nowrap border-b-2 border-ink pb-[3px] text-[16px] font-semibold">{t(lang, 'home.work_link')}</a>
       </div>
       {/* Mirrors the portfolio order, and each card now opens its own case study rather than
           dropping every visitor on the portfolio index. */}
-      <div class="grid grid-cols-3 gap-7 max-[900px]:grid-cols-1">
+      <div class="grid grid-cols-3 gap-4 max-[900px]:grid-cols-1">
         <a href={localePath(lang, '/portfolio/farblieferant')} class="flex flex-col gap-[18px]">
           <Screenshot src={fbCard} alt={t(lang, 'img.fb_card')} ratio="4/3" radius="card" sizes="(max-width: 900px) 100vw, 392px" />
           <div>
-            <div class="text-[19px] font-bold tracking-[-0.01em]">Farblieferant</div>
+            <div class="text-[16px] font-bold tracking-[-0.01em]">Farblieferant</div>
             <div class="mt-1 text-[14px] text-txt-4">{t(lang, 'home.w1_tag')}</div>
           </div>
         </a>
         <a href={localePath(lang, '/portfolio/aya')} class="flex flex-col gap-[18px]">
           <Screenshot src={ayaCard} alt={t(lang, 'img.aya_card')} ratio="4/3" radius="card" sizes="(max-width: 900px) 100vw, 392px" />
           <div>
-            <div class="text-[19px] font-bold tracking-[-0.01em]">Cabinet Aya Alaoui El Hadari</div>
+            <div class="text-[16px] font-bold tracking-[-0.01em]">Cabinet Aya Alaoui El Hadari</div>
             <div class="mt-1 text-[14px] text-txt-4">{t(lang, 'home.w4_tag')}</div>
           </div>
         </a>
         <a href={localePath(lang, '/portfolio/phpmorocco')} class="flex flex-col gap-[18px]">
           <Screenshot src={phpCard} alt={t(lang, 'img.php_card')} ratio="4/3" radius="card" sizes="(max-width: 900px) 100vw, 392px" />
           <div>
-            <div class="text-[19px] font-bold tracking-[-0.01em]">PHP Morocco</div>
+            <div class="text-[16px] font-bold tracking-[-0.01em]">PHP Morocco</div>
             <div class="mt-1 text-[14px] text-txt-4">{t(lang, 'home.w2_tag')}</div>
           </div>
         </a>
@@ -211,23 +211,23 @@ const capabilities = [
   <!-- Audience -->
   <section class="border-t border-line">
     <div class="mk-container mk-section">
-      <Kicker class="mb-5">{t(lang, 'home.who_kicker')}</Kicker>
-      <h2 class="text-h2 m-0 mb-14">{t(lang, 'home.who_title')}</h2>
+      <Kicker class="mb-3">{t(lang, 'home.who_kicker')}</Kicker>
+      <h2 class="text-h2 m-0 mb-8">{t(lang, 'home.who_title')}</h2>
       <div class="mk-cell-grid grid grid-cols-2 gap-0 border-t border-line max-[900px]:grid-cols-1">
         <div class="mk-cell border-b border-line pb-9 pt-9 pe-10 max-[900px]:border-s-0 max-[900px]:px-0 max-[900px]:py-7">
-          <div class="mb-2.5 text-[20px] font-bold">{t(lang, 'home.a1_t')}</div>
+          <div class="mb-2.5 text-[16px] font-bold">{t(lang, 'home.a1_t')}</div>
           <p class="m-0 text-[15px] leading-[1.6] text-txt-2">{t(lang, 'home.a1_d')}</p>
         </div>
         <div class="mk-cell border-b border-s border-line pb-9 pt-9 ps-10 max-[900px]:border-s-0 max-[900px]:px-0 max-[900px]:py-7">
-          <div class="mb-2.5 text-[20px] font-bold">{t(lang, 'home.a2_t')}</div>
+          <div class="mb-2.5 text-[16px] font-bold">{t(lang, 'home.a2_t')}</div>
           <p class="m-0 text-[15px] leading-[1.6] text-txt-2">{t(lang, 'home.a2_d')}</p>
         </div>
         <div class="mk-cell border-b border-line pb-9 pt-9 pe-10 max-[900px]:border-s-0 max-[900px]:px-0 max-[900px]:py-7">
-          <div class="mb-2.5 text-[20px] font-bold">{t(lang, 'home.a3_t')}</div>
+          <div class="mb-2.5 text-[16px] font-bold">{t(lang, 'home.a3_t')}</div>
           <p class="m-0 text-[15px] leading-[1.6] text-txt-2">{t(lang, 'home.a3_d')}</p>
         </div>
         <div class="mk-cell border-b border-s border-line pb-9 pt-9 ps-10 max-[900px]:border-s-0 max-[900px]:px-0 max-[900px]:py-7">
-          <div class="mb-2.5 text-[20px] font-bold">{t(lang, 'home.a4_t')}</div>
+          <div class="mb-2.5 text-[16px] font-bold">{t(lang, 'home.a4_t')}</div>
           <p class="m-0 text-[15px] leading-[1.6] text-txt-2">{t(lang, 'home.a4_d')}</p>
         </div>
       </div>
@@ -237,9 +237,9 @@ const capabilities = [
   <!-- Testimonials -->
   <section class="border-t border-line bg-card">
     <div class="mk-container mk-section">
-      <Kicker class="mb-5">{t(lang, 'home.tm_kicker')}</Kicker>
-      <h2 class="text-h2 m-0 mb-14">{t(lang, 'home.tm_title')}</h2>
-      <div class="grid grid-cols-3 gap-7 max-[900px]:grid-cols-1">
+      <Kicker class="mb-3">{t(lang, 'home.tm_kicker')}</Kicker>
+      <h2 class="text-h2 m-0 mb-8">{t(lang, 'home.tm_title')}</h2>
+      <div class="grid grid-cols-3 gap-4 max-[900px]:grid-cols-1">
         <figure class="m-0 flex flex-col gap-6 rounded-card border border-line bg-paper p-9">
           <blockquote class="m-0 text-[17px] leading-[1.65]">{t(lang, 'home.tm1_q')}</blockquote>
           <figcaption class="mt-auto text-[14px] font-semibold text-txt-4">{t(lang, 'home.tm1_a')}</figcaption>

@@ -298,7 +298,7 @@ test('the CTO row names both phrasings so either search term lands', async ({ pa
 
 test('the audit phases read in order', async ({ page }) => {
   await page.goto('/en/services');
-  const titles = await page.locator('#t2 ~ div .text-\\[19px\\]').allInnerTexts();
+  const titles = await page.locator('#t2 ~ div .text-\\[16px\\].font-bold').allInnerTexts();
   expect(titles.map((s) => s.trim())).toEqual([
     'Where the engineering really stands',
     'The team and the way it works',

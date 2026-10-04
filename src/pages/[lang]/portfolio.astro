@@ -19,10 +19,10 @@ const description = t(lang, 'seo.portfolio_desc');
 ---
 <Base lang={lang} path="/portfolio" title={title} description={description} active="portfolio" ctaPage="portfolio">
   <!-- Hero -->
-  <section class="mk-container pb-[72px] pt-[100px]">
-    <Kicker class="mb-7">{t(lang, 'portfolio.kicker_page')}</Kicker>
+  <section class="mk-container pb-16 pt-16">
+    <Kicker class="mb-3">{t(lang, 'portfolio.kicker_page')}</Kicker>
     <h1 class="text-h1 m-0 max-w-[16ch]">{t(lang, 'portfolio.hero_title')}</h1>
-    <p class="mt-8 max-w-[56ch] text-[19px] leading-[1.6] text-txt-2">{t(lang, 'portfolio.hero_sub')}</p>
+    <p class="mt-8 max-w-[56ch] text-[16px] leading-[1.6] text-txt-2">{t(lang, 'portfolio.hero_sub')}</p>
   </section>
 
   <!-- Farblieferant -->
@@ -38,7 +38,7 @@ const description = t(lang, 'seo.portfolio_desc');
           <span>{t(lang, 'portfolio.f1_s2')}</span>
           <span>{t(lang, 'portfolio.f1_s3')}</span>
         </div>
-        <div class="flex flex-wrap gap-7">
+        <div class="flex flex-wrap gap-4">
           <a href={localePath(lang, '/portfolio/farblieferant')} class="border-b-2 border-ink pb-[3px] text-[15px] font-semibold">{t(lang, 'portfolio.f1_case')}</a>
           <a href="https://farblieferant.de" target="_blank" rel="noopener" class="border-b-2 border-ink pb-[3px] text-[15px] font-semibold">farblieferant.de ↗</a>
         </div>
@@ -61,7 +61,7 @@ const description = t(lang, 'seo.portfolio_desc');
           <span>{t(lang, 'portfolio.f4_s2')}</span>
           <span>{t(lang, 'portfolio.f4_s3')}</span>
         </div>
-        <div class="flex flex-wrap gap-7">
+        <div class="flex flex-wrap gap-4">
           <a href={localePath(lang, '/portfolio/aya')} class="border-b-2 border-ink pb-[3px] text-[15px] font-semibold">{t(lang, 'portfolio.f4_case')}</a>
           <a href="https://www.ayapsychomotricite.ma" target="_blank" rel="noopener" class="border-b-2 border-ink pb-[3px] text-[15px] font-semibold">ayapsychomotricite.ma ↗</a>
         </div>
@@ -83,7 +83,7 @@ const description = t(lang, 'seo.portfolio_desc');
           <span>{t(lang, 'portfolio.f2_s2')}</span>
           <span>{t(lang, 'portfolio.f2_s3')}</span>
         </div>
-        <div class="flex flex-wrap gap-7">
+        <div class="flex flex-wrap gap-4">
           <a href={localePath(lang, '/portfolio/phpmorocco')} class="border-b-2 border-ink pb-[3px] text-[15px] font-semibold">{t(lang, 'portfolio.f2_case')}</a>
           <a href="https://phpmorocco.ma" target="_blank" rel="noopener" class="border-b-2 border-ink pb-[3px] text-[15px] font-semibold">phpmorocco.ma ↗</a>
         </div>
@@ -98,7 +98,7 @@ const description = t(lang, 'seo.portfolio_desc');
   */}
   <section class="border-t border-line bg-card">
     <div class="mk-container mk-section">
-      <Kicker class="mb-9">{t(lang, 'portfolio.also_kicker')}</Kicker>
+      <Kicker class="mb-3">{t(lang, 'portfolio.also_kicker')}</Kicker>
       <div class="grid grid-cols-2 gap-8 max-[760px]:grid-cols-1">
         <!-- Marrakech PHP -->
         <article class="flex flex-col rounded-card border border-line bg-paper p-7">
@@ -110,7 +110,7 @@ const description = t(lang, 'seo.portfolio_desc');
             class="mb-6"
           />
           <Kicker class="mb-3">{t(lang, 'portfolio.f3_kicker')}</Kicker>
-          <h3 class="m-0 mb-3 text-[24px] font-bold leading-[1.15] tracking-[-0.02em]">Marrakech PHP</h3>
+          <h3 class="m-0 mb-3 text-[16px] font-bold leading-[1.15] tracking-[-0.02em]">Marrakech PHP</h3>
           <p class="m-0 mb-6 text-[15px] leading-[1.6] text-txt-2">{t(lang, 'portfolio.f3_short')}</p>
           {/* mt-auto keeps the two cards' links aligned when the copy lengths differ. */}
           <a
@@ -125,7 +125,7 @@ const description = t(lang, 'seo.portfolio_desc');
         <article class="flex flex-col rounded-card border border-dashed border-line-mid bg-paper p-7">
           <ImagePlaceholder ratio="16/10" label={t(lang, 'portfolio.soon_visual')} class="mb-6" />
           <Kicker class="mb-3">{t(lang, 'portfolio.soon_kicker')}</Kicker>
-          <h3 class="m-0 mb-3 text-[24px] font-bold leading-[1.15] tracking-[-0.02em] text-txt-2">{t(lang, 'portfolio.soon_title')}</h3>
+          <h3 class="m-0 mb-3 text-[16px] font-bold leading-[1.15] tracking-[-0.02em] text-txt-2">{t(lang, 'portfolio.soon_title')}</h3>
           <p class="m-0 text-[15px] leading-[1.6] text-txt-3">{t(lang, 'portfolio.soon_desc')}</p>
         </article>
       </div>

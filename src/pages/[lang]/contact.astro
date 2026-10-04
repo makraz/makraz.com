@@ -15,11 +15,11 @@ const description = t(lang, 'seo.contact_desc');
 const faqs = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6'] as const;
 ---
 <Base lang={lang} path="/contact" title={title} description={description} active="contact" hideCta>
-  <section class="mk-container grid grid-cols-[1fr_1.1fr] items-start gap-20 pb-[110px] pt-[100px] max-[900px]:grid-cols-1">
+  <section class="mk-container grid grid-cols-[1fr_1.1fr] items-start gap-20 pb-16 pt-16 max-[900px]:grid-cols-1">
     <div>
-      <Kicker class="mb-7">{t(lang, 'contact.kicker_page')}</Kicker>
+      <Kicker class="mb-3">{t(lang, 'contact.kicker_page')}</Kicker>
       <h1 class="text-h1 m-0 max-w-[14ch]">{t(lang, 'contact.hero_title')}</h1>
-      <p class="mb-11 mt-7 max-w-[46ch] text-[18px] leading-[1.65] text-txt-2">{t(lang, 'contact.hero_sub')}</p>
+      <p class="mb-8 mt-7 max-w-[46ch] text-[16px] leading-[1.65] text-txt-2">{t(lang, 'contact.hero_sub')}</p>
       <div class="flex flex-col gap-0 border-t border-line">
         <a href="mailto:contact@makraz.com" class="flex items-center justify-between gap-4 border-b border-line py-[22px] hover:text-txt-2">
           <span class="text-[14px] font-semibold text-txt-4">{t(lang, 'contact.lbl_email')}</span>
@@ -44,7 +44,7 @@ const faqs = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6'] as const;
       </div>
     </div>
     <div class="rounded-media border border-line bg-card p-12 max-[900px]:p-7">
-      <div class="mb-2 text-[22px] font-bold tracking-[-0.01em]">{t(lang, 'contact.form_title')}</div>
+      <div class="mb-2 text-[20px] font-bold tracking-[-0.01em]">{t(lang, 'contact.form_title')}</div>
       <p class="m-0 mb-8 text-[14px] text-txt-4">{t(lang, 'contact.form_sub')}</p>
       <ContactForm lang={lang} />
     </div>
@@ -53,8 +53,8 @@ const faqs = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6'] as const;
   <!-- FAQ -->
   <section class="border-t border-line bg-card">
     <div class="mx-auto max-w-[840px] px-8 py-[88px]">
-      <Kicker class="mb-5">{t(lang, 'contact.faq_kicker')}</Kicker>
-      <h2 class="text-h2 m-0 mb-10">{t(lang, 'contact.faq_title')}</h2>
+      <Kicker class="mb-3">{t(lang, 'contact.faq_kicker')}</Kicker>
+      <h2 class="text-h2 m-0 mb-8">{t(lang, 'contact.faq_title')}</h2>
       <div class="border-t border-line">
         {faqs.map((q) => (
           <details class="border-b border-line">

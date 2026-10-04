@@ -1,7 +1,7 @@
 ---
 import { SHOW_BLOG_IN_MENUS } from '../lib/flags.mjs';
 import { localePath, t, type Locale } from '../i18n';
-import logoWhite from '../assets/logo-white.png';
+import logoBlack from '../assets/logo-black.png';
 
 interface Props { lang: Locale }
 const { lang } = Astro.props;
@@ -14,45 +14,41 @@ const links = [
   ['/contact', 'common.nav_contact'],
 ] as const;
 ---
-<footer class="border-t border-[#262626] bg-ink text-white">
-  <div class="mk-container flex flex-wrap justify-between gap-12 py-[64px] pb-[48px]">
+<footer class="border-t border-line bg-white text-ink">
+  <div class="mk-container flex flex-wrap justify-between gap-12 py-12">
     <div class="flex max-w-[320px] flex-col gap-4">
       <div class="flex items-center gap-3">
-        <img src={logoWhite.src} alt="MAKRAZ" class="h-[30px] w-[30px] object-contain" />
+        <img src={logoBlack.src} alt="MAKRAZ" class="h-[30px] w-[30px] object-contain" />
         <span class="text-[15px] font-bold tracking-[.18em]">MAKRAZ</span>
       </div>
-      <p class="m-0 text-[14px] leading-[1.6] text-[#a3a3a3]">{t(lang, 'common.footer_about')}</p>
+      <p class="m-0 text-[14px] leading-[1.43] text-txt-3">{t(lang, 'common.footer_about')}</p>
     </div>
-    <div class="flex flex-wrap gap-20">
-      <div class="flex flex-col gap-3 text-[14px]">
-        <div class="mb-[6px] text-[12px] font-semibold tracking-[.2em] text-[#737373] uppercase">
-          {t(lang, 'home.ft_nav')}
-        </div>
+    <div class="flex flex-wrap gap-x-20 gap-y-10">
+      <div class="flex flex-col gap-3 text-[14px] leading-[1.43]">
+        <div class="mb-1 text-[16px] font-medium">{t(lang, 'home.ft_nav')}</div>
         {links.map(([href, label]) => (
-          <a href={localePath(lang, href)} class="text-[#d4d4d4] hover:text-white">{t(lang, label)}</a>
+          <a href={localePath(lang, href)} class="text-ink hover:underline">{t(lang, label)}</a>
         ))}
       </div>
-      <div class="flex flex-col gap-3 text-[14px]">
-        <div class="mb-[6px] text-[12px] font-semibold tracking-[.2em] text-[#737373] uppercase">
-          {t(lang, 'home.ft_contact')}
-        </div>
-        <a href="mailto:contact@makraz.com" class="text-[#d4d4d4] hover:text-white">contact@makraz.com</a>
-        <a href="https://makraz.com" class="text-[#d4d4d4] hover:text-white">makraz.com</a>
-        <a href="tel:+212661764392" class="text-[#d4d4d4] hover:text-white">+212 6 61 76 43 92</a>
+      <div class="flex flex-col gap-3 text-[14px] leading-[1.43]">
+        <div class="mb-1 text-[16px] font-medium">{t(lang, 'home.ft_contact')}</div>
+        <a href="mailto:contact@makraz.com" class="text-ink hover:underline">contact@makraz.com</a>
+        <a href="https://makraz.com" class="text-ink hover:underline">makraz.com</a>
+        <a href="tel:+212661764392" class="text-ink hover:underline">+212 6 61 76 43 92</a>
         <a
           href="https://share.google/WllPHd9fKnFBdVmS0"
           target="_blank"
           rel="noopener"
-          class="text-[#d4d4d4] hover:text-white"
+          class="text-ink hover:underline"
         >{t(lang, 'common.footer_addr')}</a>
       </div>
     </div>
   </div>
-  <div class="mk-container border-t border-[#262626] pb-10">
-    <div class="flex flex-wrap justify-between gap-4 pt-6 text-[13px] text-ondark-3">
+  <div class="border-t border-line">
+    <div class="mk-container flex flex-wrap justify-between gap-4 py-6 text-[13px] leading-[1.23] text-txt-3">
       <span>
         © 2026 MAKRAZ SARLAU ·
-        <a href={localePath(lang, '/mentions-legales')} class="text-ondark-3 hover:text-ondark-2">{t(lang, 'common.footer_legal')}</a>
+        <a href={localePath(lang, '/mentions-legales')} class="text-txt-3 hover:text-ink hover:underline">{t(lang, 'common.footer_legal')}</a>
       </span>
       <span>{t(lang, 'common.footer_tag')}</span>
     </div>

@@ -5,14 +5,15 @@ import logoWhite from '../assets/logo-white.png';
 interface Props { lang: Locale; page: string }
 const { lang, page } = Astro.props;
 ---
+{/* The page's one dark band: the single high-contrast moment before the white footer. */}
 <section class="bg-ink text-white">
-  <div class="mk-container py-[110px] text-center">
-    <img src={logoWhite.src} alt="" class="mx-auto mb-8 h-11 w-11 object-contain" />
-    <h2 class="text-h2 mx-auto max-w-[20ch] text-balance">{t(lang, `${page}.cta_title`)}</h2>
+  <div class="mk-container py-16 text-center">
+    <img src={logoWhite.src} alt="" class="mx-auto mb-6 h-10 w-10 object-contain" />
+    <h2 class="text-h1 mx-auto max-w-[24ch] text-balance">{t(lang, `${page}.cta_title`)}</h2>
     {has(`${page}.cta_sub`) && (
-      <p class="mx-auto mt-6 mb-11 max-w-[52ch] text-[18px] leading-[1.6] text-ondark-2">{t(lang, `${page}.cta_sub`)}</p>
+      <p class="mx-auto mt-4 max-w-[52ch] text-[16px] leading-[1.5] text-ondark-1">{t(lang, `${page}.cta_sub`)}</p>
     )}
-    <a href={localePath(lang, '/contact')} class="btn btn-ondark px-[34px] py-[17px] text-[16px]">
+    <a href={localePath(lang, '/contact')} class="btn btn-ondark mt-8">
       {t(lang, `${page}.cta_btn`)}
     </a>
   </div>

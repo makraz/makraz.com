@@ -11,6 +11,7 @@ export type ServiceData = {
   number?: string;
   title: string;
   seoTitle?: string;
+  heading?: string;
   lead: string;
   included?: ServiceItem[];
   steps?: ServiceItem[];

@@ -5,7 +5,8 @@ kind: leaf
 pillar: developpement
 order: 3
 title: "Sites internet"
-seoTitle: "Création de site internet à Marrakech"
+seoTitle: "Création de site web à Marrakech"
+heading: "Création de site web à Marrakech"
 lead: "Sites vitrines et institutionnels : rapides, tenus à jour, et pensés pour transformer une visite en prise de contact."
 project: aya
 included:

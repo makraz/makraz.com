@@ -53,6 +53,9 @@ const services = defineCollection({
       // Optional: overrides the <title>. Needed where a service name is identical across
       // locales ("Design", "E-commerce"), which would otherwise ship duplicate titles.
       seoTitle: z.string().optional(),
+      // Optional: overrides the page's H1 only. `title` stays the short name used on cards and in
+      // lists, while the heading can carry the phrase people search for.
+      heading: z.string().optional(),
       lead: z.string(),
       included: z.array(serviceItem).optional(),
       steps: z.array(serviceItem).optional(),

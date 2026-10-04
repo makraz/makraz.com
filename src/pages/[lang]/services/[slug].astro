@@ -51,7 +51,7 @@ const description = data.lead;
   <section class="mk-container pb-14 pt-[90px]">
     <a href={localePath(lang, '/services')} class="text-[14px] font-semibold text-txt-4 hover:text-ink">{t(lang, 'service.back')}</a>
     <Kicker class="mb-5 mt-9">{parent ? parent.title : data.number}</Kicker>
-    <h1 class="text-h1 m-0 max-w-[20ch]">{data.title}</h1>
+    <h1 class="text-h1 m-0 max-w-[20ch]">{data.heading ?? data.title}</h1>
     <p class="mt-[26px] max-w-[58ch] text-[19px] leading-[1.6] text-txt-2">{data.lead}</p>
   </section>
 

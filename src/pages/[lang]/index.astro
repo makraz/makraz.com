@@ -5,6 +5,7 @@ import Screenshot from '../../components/Screenshot.astro';
 import fbCard from '../../assets/farblieferant-card.png';
 import phpCard from '../../assets/phpmorocco-card.png';
 import ayaCard from '../../assets/aya-hero.png';
+import heroIllustration from '../../assets/hero-illustration.svg';
 import { locales, t, localePath, type Locale } from '../../i18n';
 
 export function getStaticPaths() {
@@ -65,7 +66,14 @@ const capabilities = [
   })} />
 
   <!-- Hero -->
-  <section class="mk-container pb-16 pt-16">
+  {/*
+    Text and illustration side by side on desktop; on narrow screens the illustration drops below
+    the CTAs so the headline and the call to action stay above the fold. The grid mirrors itself in
+    Arabic. The illustration is decorative (unDraw "Building A Website", recoloured to the ink
+    token), so it is hidden from assistive technology.
+  */}
+  <section class="mk-container grid grid-cols-[minmax(0,1fr)_minmax(0,460px)] items-center gap-12 py-16 max-[900px]:grid-cols-1 max-[900px]:gap-10">
+    <div>
     <Kicker class="mb-3">{t(lang, 'home.hero_kicker')}</Kicker>
     {/*
       Three beats, one per line — that rhythm is the headline, so the breaks are authored with `|`
@@ -79,6 +87,17 @@ const capabilities = [
       <a href={localePath(lang, '/contact')} class="btn btn-primary">{t(lang, 'home.hero_cta1')}</a>
       <a href={localePath(lang, '/portfolio')} class="btn btn-ghost">{t(lang, 'home.hero_cta2')}</a>
     </div>
+    </div>
+    <img
+      src={heroIllustration.src}
+      width={heroIllustration.width}
+      height={heroIllustration.height}
+      alt=""
+      aria-hidden="true"
+      loading="eager"
+      decoding="async"
+      class="h-auto w-full rtl:-scale-x-100 max-[900px]:mx-auto max-[900px]:max-w-[320px]"
+    />
   </section>
 
   <!-- Process -->

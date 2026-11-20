@@ -1,3 +1,6 @@
 allowBuilds:
   esbuild: true
   workerd: true
+overrides:
+  # CVE-2023-54404 (memory exhaustion on oversized constrained collections); reached via astro and @astrojs/sitemap
+  zod: ^4.6.6

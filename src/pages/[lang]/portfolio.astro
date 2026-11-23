@@ -7,6 +7,7 @@ import fbCard from '../../assets/farblieferant-card.png';
 import ayaCard from '../../assets/aya-hero.png';
 import phpCard from '../../assets/phpmorocco-card.png';
 import mphpCard from '../../assets/marrakechphp-card.png';
+import palmarenaCard from '../../assets/palmarena-hero.png';
 import { locales, t, localePath, type Locale } from '../../i18n';
 
 export function getStaticPaths() {
@@ -88,6 +89,27 @@ const description = t(lang, 'seo.portfolio_desc');
           <a href="https://phpmorocco.ma" target="_blank" rel="noopener" class="border-b-2 border-ink pb-[3px] text-[15px] font-semibold">phpmorocco.ma ↗</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Palmarena: mirrored like Aya to keep the image/text alternation. -->
+  <section class="border-t border-line">
+    <div class="mk-container mk-section grid grid-cols-[1fr_1.25fr] items-center gap-16 max-[900px]:grid-cols-1">
+      <div class="max-[900px]:order-2">
+        <Kicker class="mb-[18px]">{t(lang, 'portfolio.f5_kicker')}</Kicker>
+        <h2 class="text-h2-sub m-0 mb-[18px]">Palmarena Soccer Club</h2>
+        <p class="m-0 mb-7 text-[16px] leading-[1.65] text-txt-2">{t(lang, 'portfolio.f5_desc')}</p>
+        <div class="mb-7 flex flex-col gap-2.5 text-[14px] text-ink">
+          <span>{t(lang, 'portfolio.f5_s1')}</span>
+          <span>{t(lang, 'portfolio.f5_s2')}</span>
+          <span>{t(lang, 'portfolio.f5_s3')}</span>
+        </div>
+        <div class="flex flex-wrap gap-4">
+          <a href={localePath(lang, '/portfolio/palmarena')} class="border-b-2 border-ink pb-[3px] text-[15px] font-semibold">{t(lang, 'portfolio.f5_case')}</a>
+          <a href="https://palmarena.ma" target="_blank" rel="noopener" class="border-b-2 border-ink pb-[3px] text-[15px] font-semibold">palmarena.ma ↗</a>
+        </div>
+      </div>
+      <Screenshot src={palmarenaCard} alt={t(lang, 'img.palmarena_hero')} ratio="16/11" radius="media" sizes="(max-width: 900px) 100vw, 690px" class="max-[900px]:order-1" />
     </div>
   </section>
 

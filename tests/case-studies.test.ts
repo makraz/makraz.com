@@ -10,6 +10,7 @@ const STUDIES = [
   { slug: 'farblieferant', keyspace: 'case_farblieferant' },
   { slug: 'phpmorocco', keyspace: 'case_phpmorocco' },
   { slug: 'aya', keyspace: 'case_aya' },
+  { slug: 'palmarena', keyspace: 'case_palmarena' },
 ];
 
 describe('case study content', () => {

@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { BLOG_MAINTENANCE, SHOW_BLOG_IN_MENUS } from '../src/lib/flags.mjs';
 
 const langs = ['fr', 'en', 'ar'] as const;
-const paths = ['', '/services', '/portfolio', '/portfolio/farblieferant', '/portfolio/phpmorocco', '/portfolio/aya', '/a-propos', '/contact', ...(BLOG_MAINTENANCE ? [] : ['/blog']), '/mentions-legales'];
+const paths = ['', '/services', '/portfolio', '/portfolio/farblieferant', '/portfolio/phpmorocco', '/portfolio/aya', '/portfolio/palmarena', '/a-propos', '/contact', ...(BLOG_MAINTENANCE ? [] : ['/blog']), '/mentions-legales'];
 
 for (const lang of langs) {
   for (const path of paths) {
@@ -510,3 +510,16 @@ test('services with no genuine project show no case study', async ({ page }) => 
   await page.goto('/fr/services/devops-cloud');
   await expect(page.getByText('Étude de cas')).toHaveCount(0);
 });
+
+// --- Palmarena case study ---
+
+for (const lang of langs) {
+  test(`the Palmarena case study renders in ${lang}`, async ({ page }) => {
+    await page.goto(`/${lang}/portfolio/palmarena`);
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+    // Three body sections from the content collection; the CTA band is not a heading.
+    await expect(page.getByRole('heading', { level: 2 })).toHaveCount(3);
+    await expect(page.locator('a[href="https://palmarena.ma"]')).toBeVisible();
+    await expect(page.locator('section img')).toHaveCount(3);
+  });
+}

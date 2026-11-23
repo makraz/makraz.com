@@ -88,4 +88,4 @@ Then, back inside Claude Code, run `/mattpocock-skills:setup-matt-pocock-skills`
 
 My advice: don't install twenty skills on day one. Start with **`/mattpocock-skills:grill-with-docs`** before each task and **`/ponytail-review`** before each merge. Those two alone change the quality of what the agent hands you. Add the rest as you feel the need. Both collections are open source and readable in a few minutes, so read them, adapt them and make them your own.
 
-We use this workflow in our [development](/en/services/developpement) and [engineering audit](/en/services/audit-ingenierie) work. The agent itself runs in a sandbox: see [ddev-claude](/en/blog/ddev-claude).
+We use this workflow in our [development](/en/services/development) and [engineering audit](/en/services/engineering-audit) work. The agent itself runs in a sandbox: see [ddev-claude](/en/blog/ddev-claude).

@@ -7,7 +7,7 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { getPillars, getChildren, type ServiceData } from '../lib/services';
-import { locales, t, type Locale } from '../i18n';
+import { locales, localePath, t, type Locale } from '../i18n';
 import { BLOG_MAINTENANCE } from '../lib/flags.mjs';
 
 const SITE = 'https://makraz.com';
@@ -57,23 +57,22 @@ export const GET: APIRoute = async () => {
   ];
 
   for (const lang of locales) {
-    const base = `${SITE}/${lang}`;
     const services = allServices
       .filter((e) => e.data.lang === lang)
       .map((e) => e.data as ServiceData);
 
     out.push('', `## ${LOCALE_LABEL[lang]} — Pages (${lang.toUpperCase()})`, '');
     for (const [path, titleKey, descKey] of PAGES) {
-      out.push(link(t(lang, titleKey), `${base}${path}`, t(lang, descKey)));
+      out.push(link(t(lang, titleKey), `${SITE}${localePath(lang, path)}`, t(lang, descKey)));
     }
 
     // Pillars carry their leaves indented beneath them, so the taxonomy's shape survives the
     // flattening into a list — a model can see that "Sites internet" sits under "Développement".
     out.push('', `## ${LOCALE_LABEL[lang]} — Services (${lang.toUpperCase()})`, '');
     for (const pillar of getPillars(services)) {
-      out.push(link(pillar.title, `${base}/services/${pillar.slug}`, pillar.lead));
+      out.push(link(pillar.title, `${SITE}${localePath(lang, `/services/${pillar.slug}`)}`, pillar.lead));
       for (const leaf of getChildren(services, pillar.slug)) {
-        out.push(link(leaf.title, `${base}/services/${leaf.slug}`, leaf.lead, '  '));
+        out.push(link(leaf.title, `${SITE}${localePath(lang, `/services/${leaf.slug}`)}`, leaf.lead, '  '));
       }
     }
 
@@ -82,7 +81,7 @@ export const GET: APIRoute = async () => {
       // startsWith(slug), not `${slug}.` — the glob loader slugifies "aya.fr.md" to the id
       // "aya-fr", so a dot never survives. Same lookup the portfolio pages use.
       const entry = allCases.find((e) => e.data.lang === lang && e.id.startsWith(slug));
-      if (entry) out.push(link(entry.data.project, `${base}/portfolio/${slug}`, entry.data.kicker));
+      if (entry) out.push(link(entry.data.project, `${SITE}${localePath(lang, `/portfolio/${slug}`)}`, entry.data.kicker));
     }
 
     const posts = allBlog
@@ -91,7 +90,7 @@ export const GET: APIRoute = async () => {
     if (posts.length && !BLOG_MAINTENANCE) {
       out.push('', `## ${LOCALE_LABEL[lang]} — ${t(lang, 'common.nav_blog')} (${lang.toUpperCase()})`, '');
       for (const post of posts) {
-        out.push(link(post.data.title, `${base}/blog/${post.data.slug}`, post.data.description));
+        out.push(link(post.data.title, `${SITE}${localePath(lang, `/blog/${post.data.slug}`)}`, post.data.description));
       }
     }
   }

@@ -13,11 +13,12 @@ import mphpCard from '../../../assets/marrakechphp-card.png';
 import ayaCard from '../../../assets/aya-hero.png';
 import { getChildren, getParent, getSiblings, type ServiceData } from '../../../lib/services';
 import { t, localePath, type Locale } from '../../../i18n';
+import { localizeSlug } from '../../../lib/routes.mjs';
 
 export async function getStaticPaths() {
   const all = await getCollection('services');
   return all.map((entry) => ({
-    params: { lang: entry.data.lang, slug: entry.data.slug },
+    params: { lang: entry.data.lang, slug: localizeSlug(entry.data.lang, 'services', entry.data.slug) },
     props: { entry },
   }));
 }

@@ -1,0 +1,10 @@
+---
+// The legal notice for English and Arabic, at the translated slug. The page itself lives in
+// mentions-legales.astro, which serves French; it reads Astro.params.lang, so it renders the right language.
+import LegalPage from './mentions-legales.astro';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'ar' } }];
+}
+---
+<LegalPage />

@@ -6,8 +6,18 @@ import cloudflare from '@astrojs/cloudflare';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { BLOG_MAINTENANCE } from './src/lib/flags.mjs';
+import { LOCALIZED_PATHS, delocalizePath, localizePath } from './src/lib/routes.mjs';
 
 const LOCALES = ['fr', 'en', 'ar'];
+const SITE = 'https://makraz.com';
+
+// The old English and Arabic URLs used the French slugs; each one now redirects (301) to its
+// translated slug, so links and rankings carry over.
+const slugRedirects = Object.fromEntries(
+  LOCALES.flatMap((lang) =>
+    Object.entries(LOCALIZED_PATHS[lang] ?? {}).map(([fr, local]) => [`/${lang}${fr}`, `/${lang}${local}`]),
+  ),
+);
 
 /**
  * What a page is actually made of: its template/markdown, plus the slice of the locale JSON that
@@ -21,7 +31,9 @@ function sourcesFor(url) {
   const path = new URL(url).pathname.replace(/\/$/, '');
   const match = path.match(new RegExp(`^/(${LOCALES.join('|')})(/.*)?$`));
   if (!match) return { files: [] };
-  const [, lang, rest = ''] = match;
+  const [, lang, served = ''] = match;
+  // Sources are keyed by the French route (file names, collection slugs), not the translated URL.
+  const rest = delocalizePath(lang, served);
   const slug = rest.split('/')[2];
   const files = [];
   // The page's i18n namespace: its copy lives in `<ns>.*` keys and its <title>/<meta description>
@@ -92,7 +104,7 @@ function lastmodFor(url) {
 }
 
 export default defineConfig({
-  site: 'https://makraz.com',
+  site: SITE,
   output: 'static',
   // imageService: 'compile' optimizes images with sharp at build time. Without it the adapter
   // emits runtime /_image?… URLs, which the deployed Worker does not serve for a static build.
@@ -110,7 +122,8 @@ export default defineConfig({
       },
     },
     sitemap({
-      i18n: { defaultLocale: 'fr', locales: { fr: 'fr', en: 'en', ar: 'ar' } },
+      // No `i18n` option: it pairs languages by identical paths, which translated slugs break
+      // (/en/about vs /fr/a-propos). serialize() builds the alternates from the route table instead.
       // Pages that carry noindex are kept out of the sitemap too, so the two signals agree:
       // /mycard is a QR destination rather than search content.
       // In blog maintenance the blog goes too: a sitemap should only list URLs that answer 200.
@@ -119,11 +132,16 @@ export default defineConfig({
       serialize(item) {
         const lastmod = lastmodFor(item.url);
         if (lastmod) item.lastmod = lastmod;
-        // The i18n option emits fr/en/ar alternates but no x-default, while every page's <head>
-        // declares one. Point it at French, matching both the head tag and `defaultLocale`.
-        if (item.links?.length) {
-          const fallback = item.url.replace(new RegExp(`/(${LOCALES.join('|')})(/|$)`), '/fr$2');
-          item.links = [...item.links, { lang: 'x-default', url: fallback }];
+        // fr/en/ar alternates plus x-default (French), matching the hreflang tags in every page's
+        // <head>. Each language's URL comes from the route table, so translated slugs pair up.
+        const m = new URL(item.url).pathname.match(new RegExp(`^/(${LOCALES.join('|')})(/.*)?$`));
+        if (m) {
+          const key = delocalizePath(m[1], m[2] ?? '');
+          const urlFor = (/** @type {string} */ l) => `${SITE}/${l}${key ? localizePath(l, key) : ''}`;
+          item.links = [
+            ...LOCALES.map((l) => ({ lang: l, url: urlFor(l) })),
+            { lang: 'x-default', url: urlFor('fr') },
+          ];
         }
         // changefreq and priority are deliberately omitted: Google ignores both, and inventing
         // values for them is noise that has to be maintained.
@@ -131,7 +149,7 @@ export default defineConfig({
       },
     }),
   ],
-  redirects: { '/': '/fr' },
+  redirects: { '/': '/fr', ...slugRedirects },
   vite: {
     plugins: [tailwindcss()],
     define: {

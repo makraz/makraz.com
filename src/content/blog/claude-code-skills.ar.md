@@ -88,4 +88,4 @@ claude plugin install mattpocock-skills@claude-plugins-official
 
 نصيحتي: لا تثبّت عشرين مهارة في اليوم الأول. ابدأ بـ **`/mattpocock-skills:grill-with-docs`** قبل كل مهمة و`/ponytail-review` قبل كل دمج. هذان الأمران وحدهما يغيّران جودة ما يسلّمه لك الوكيل. أضف الباقي حسب الحاجة. المجموعتان مفتوحتا المصدر وتُقرآن في دقائق: اقرأهما، وعدّلهما، واجعلهما ملكك.
 
-نطبّق طريقة العمل هذه في خدمتَي [التطوير](/ar/services/developpement) و[التدقيق الهندسي](/ar/services/audit-ingenierie). أما الوكيل نفسه فيعمل في بيئة معزولة: اقرأ [ddev-claude](/ar/blog/ddev-claude).
+نطبّق طريقة العمل هذه في خدمتَي [التطوير](/ar/services/development) و[التدقيق الهندسي](/ar/services/engineering-audit). أما الوكيل نفسه فيعمل في بيئة معزولة: اقرأ [ddev-claude](/ar/blog/ddev-claude).

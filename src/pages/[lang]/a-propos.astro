@@ -3,10 +3,11 @@ import Base from '../../layouts/Base.astro';
 import Kicker from '../../components/Kicker.astro';
 import SectionIntro from '../../components/SectionIntro.astro';
 import ImagePlaceholder from '../../components/ImagePlaceholder.astro';
-import { locales, t, type Locale } from '../../i18n';
+import { t, type Locale } from '../../i18n';
 
+// French only: English and Arabic serve this page at /about (see about.astro).
 export function getStaticPaths() {
-  return locales.map((lang) => ({ params: { lang } }));
+  return [{ params: { lang: 'fr' } }];
 }
 const lang = Astro.params.lang as Locale;
 

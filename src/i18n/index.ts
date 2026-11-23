@@ -1,6 +1,7 @@
 import fr from './fr.json';
 import en from './en.json';
 import ar from './ar.json';
+import { localizePath } from '../lib/routes.mjs';
 
 export const locales = ['fr', 'en', 'ar'] as const;
 export type Locale = (typeof locales)[number];
@@ -29,6 +30,7 @@ export function nextLocale(lang: Locale): Locale {
   return ({ fr: 'en', en: 'ar', ar: 'fr' } as const)[lang];
 }
 
+// `path` is the French route key; English and Arabic may serve it under a translated slug.
 export function localePath(lang: Locale, path: string): string {
-  return `/${lang}${path === '/' ? '' : path}`;
+  return `/${lang}${path === '/' ? '' : localizePath(lang, path)}`;
 }

@@ -6,22 +6,25 @@ import BlogMaintenance from '../../../components/BlogMaintenance.astro';
 import { t, localePath, type Locale, isLocale } from '../../../i18n';
 import { BLOG_MAINTENANCE } from '../../../lib/flags.mjs';
 import { answerBlogMaintenance } from '../../../lib/blog-maintenance';
+import { delocalizePath, localizeSlug } from '../../../lib/routes.mjs';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   return posts.map((post) => ({
-    params: { lang: post.data.lang, slug: post.data.slug },
+    params: { lang: post.data.lang, slug: localizeSlug(post.data.lang, 'blog', post.data.slug) },
     props: { post },
   }));
 }
 const lang = Astro.params.lang as Locale;
+// The article's slug in the collection (the French route key), from the possibly translated URL.
+const routeSlug = delocalizePath(lang, `/blog/${Astro.params.slug}`).split('/').pop();
 
 // In maintenance this route is server-rendered (see the blog-maintenance integration in
 // astro.config.mjs): getStaticPaths and its props are skipped, so the slug is checked against the
 // collection here and only real articles answer 503; anything else is a plain 404.
 if (BLOG_MAINTENANCE) {
   const exists = isLocale(lang)
-    && (await getCollection('blog', (e) => e.data.lang === lang && e.data.slug === Astro.params.slug)).length > 0;
+    && (await getCollection('blog', (e) => e.data.lang === lang && e.data.slug === routeSlug)).length > 0;
   if (!exists) return new Response(null, { status: 404 });
   answerBlogMaintenance(Astro.response);
 }
@@ -75,7 +78,7 @@ const jsonLd = data && [
     : []),
 ];
 ---
-{!Content ? <BlogMaintenance lang={lang} path={`/blog/${Astro.params.slug}`} /> : (
+{!Content ? <BlogMaintenance lang={lang} path={`/blog/${routeSlug}`} /> : (
 <Base lang={lang} path={`/blog/${post.data.slug}`} title={post.data.title} description={post.data.description} active="blog" ctaPage="article" ogType="article" ctaTitle={post.data.ctaTitle}>
   <meta slot="head" property="article:published_time" content={isoDate} />
   {isoUpdated && <meta slot="head" property="article:modified_time" content={isoUpdated} />}

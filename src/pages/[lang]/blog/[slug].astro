@@ -7,6 +7,7 @@ import { t, localePath, type Locale, isLocale } from '../../../i18n';
 import { BLOG_MAINTENANCE } from '../../../lib/flags.mjs';
 import { answerBlogMaintenance } from '../../../lib/blog-maintenance';
 import { delocalizePath, localizeSlug } from '../../../lib/routes.mjs';
+import { ORG_ID, PERSON_ID } from '../../../lib/entities';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -61,8 +62,8 @@ const jsonLd = data && [
     dateModified: (data.updated ?? data.date).toISOString().slice(0, 10),
     mainEntityOfPage: url,
     image: new URL('/og-image.png', Astro.site).href,
-    author: { '@type': 'Person', name: data.author, jobTitle: data.authorRole, url: new URL(localePath(lang, '/a-propos'), Astro.site).href },
-    publisher: { '@type': 'Organization', name: 'MAKRAZ', url: Astro.site?.href, logo: new URL('/logo.png', Astro.site).href }, // fixed path, so the URL survives asset rebuilds
+    author: { '@type': 'Person', '@id': PERSON_ID, name: data.author, jobTitle: data.authorRole, url: new URL(localePath(lang, '/a-propos'), Astro.site).href },
+    publisher: { '@type': 'Organization', '@id': ORG_ID, name: 'MAKRAZ', url: Astro.site?.href, logo: new URL('/logo.png', Astro.site).href }, // fixed path, so the URL survives asset rebuilds
   },
   ...(data.faq?.length
     ? [{
@@ -79,7 +80,7 @@ const jsonLd = data && [
 ];
 ---
 {!Content ? <BlogMaintenance lang={lang} path={`/blog/${routeSlug}`} /> : (
-<Base lang={lang} path={`/blog/${post.data.slug}`} title={post.data.title} description={post.data.description} active="blog" ctaPage="article" ogType="article" ctaTitle={post.data.ctaTitle}>
+<Base lang={lang} path={`/blog/${post.data.slug}`} title={post.data.title} description={post.data.description} active="blog" ctaPage="article" ogType="article" ctaTitle={post.data.ctaTitle} crumbs={[[t(lang, 'common.nav_blog'), '/blog'], [post.data.title, `/blog/${post.data.slug}`]]}>
   <meta slot="head" property="article:published_time" content={isoDate} />
   {isoUpdated && <meta slot="head" property="article:modified_time" content={isoUpdated} />}
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

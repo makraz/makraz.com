@@ -7,6 +7,7 @@ date: 2026-08-04
 author: "Hamza Makraz"
 category: "SEO"
 authorRole: "Founder, MAKRAZ — software engineer"
+services: [referencement-naturel-seo, sites-internet]
 ---
 
 A Moroccan site that wants to be found has to deal with something few SEO tools anticipate: the same customer may search in French in the morning and in Arabic in the evening, using technical vocabulary borrowed from English. Translating the same page three times does not solve this — and can make it worse.

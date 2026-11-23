@@ -267,7 +267,7 @@
   "legal.ft_nav": "Navigation",
   "legal.ft_contact": "Contact",
   "seo.home_title": "MAKRAZ — Agence de communication au Maroc",
-  "seo.title_suffix": " — MAKRAZ, agence de communication",
+  "seo.title_suffix": " — MAKRAZ",
   "seo.blog_title": "Blog : développement web, SEO et produits digitaux au Maroc",
   "seo.blog_maint_title": "Blog en maintenance",
   "seo.home_desc": "Agence de communication au Maroc. Nous aidons startups, PME et entreprises établies à construire, moderniser et faire grandir leur activité digitale.",
@@ -391,6 +391,7 @@
   "service.discuss": "En parler avec nous →",
   "service.read_case": "Lire l'étude de cas →",
   "service.see_project": "Voir le projet →",
+  "service.reading": "À lire sur le blog",
   "services.pillar_link": "Découvrir ce métier →",
   "home.w4_tag": "Santé · ayapsychomotricite.ma"
 }

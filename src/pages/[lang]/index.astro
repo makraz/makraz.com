@@ -7,6 +7,7 @@ import phpCard from '../../assets/phpmorocco-card.png';
 import ayaCard from '../../assets/aya-hero.png';
 import heroIllustration from '../../assets/hero-illustration.svg';
 import { locales, t, localePath, type Locale } from '../../i18n';
+import { ORG_ID, ORG_SAME_AS, PERSON_ID } from '../../lib/entities';
 
 export function getStaticPaths() {
   return locales.map((lang) => ({ params: { lang } }));
@@ -34,11 +35,23 @@ const capabilities = [
   */}
   <script slot="head" type="application/ld+json" set:html={JSON.stringify({
     '@context': 'https://schema.org',
+    '@graph': [{
     '@type': ['Organization', 'ProfessionalService'],
-    name: 'MAKRAZ SARLAU',
-    url: 'https://makraz.com',
-    logo: 'https://makraz.com/og-image.png',
+    '@id': ORG_ID,
+    name: 'MAKRAZ',
+    legalName: 'MAKRAZ SARLAU',
+    url: 'https://makraz.com/',
+    logo: 'https://makraz.com/logo.png',
     image: 'https://makraz.com/og-image.png',
+    founder: { '@id': PERSON_ID },
+    ...(ORG_SAME_AS.length ? { sameAs: ORG_SAME_AS } : {}),
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'sales',
+      email: 'contact@makraz.com',
+      telephone: '+212661764392',
+      availableLanguage: ['fr', 'en', 'ar'],
+    },
     description: t(lang, 'seo.home_desc'),
     email: 'contact@makraz.com',
     telephone: '+212661764392',
@@ -63,6 +76,16 @@ const capabilities = [
         itemOffered: { '@type': 'Service', name: t(lang, key), url: new URL(localePath(lang, '/services'), Astro.site).href },
       })),
     },
+    }, {
+      // Site-name markup: what Google shows as the site name above each result.
+      '@type': 'WebSite',
+      '@id': 'https://makraz.com/#website',
+      name: 'MAKRAZ',
+      alternateName: ['makraz.com'],
+      url: 'https://makraz.com/',
+      inLanguage: ['fr', 'en', 'ar'],
+      publisher: { '@id': ORG_ID },
+    }],
   })} />
 
   <!-- Hero -->
@@ -81,7 +104,7 @@ const capabilities = [
       Modernize / it. Grow it."). Nothing but this H1 reads the key, so the delimiter stays here.
       The service lines the headline used to name now live in the sub below.
     */}
-    <h1 class="text-h1 m-0 max-w-[16ch]">{t(lang, 'home.hero_title').split('|').map((beat, i) => <>{i > 0 && <br />}{beat}</>)}</h1>
+    <h1 class="text-h1 m-0 max-w-[16ch]">{t(lang, 'home.hero_title').split('|').map((beat, i) => <>{i > 0 && <>{' '}<br /></>}{beat}</>)}</h1>
     <p class="mb-8 mt-7 max-w-[62ch] text-[16px] leading-[1.65] text-txt-2">{t(lang, 'home.hero_sub')}</p>
     <div class="flex flex-wrap items-center gap-4">
       <a href={localePath(lang, '/contact')} class="btn btn-primary">{t(lang, 'home.hero_cta1')}</a>

@@ -17,13 +17,24 @@ interface Props {
   noindex?: boolean; // keep a page out of search results while it is too thin to earn a place
   ogType?: 'website' | 'article'; // 'article' for blog posts
   ctaTitle?: string; // overrides the CtaBand heading, e.g. per blog post
+  crumbs?: [name: string, path: string][]; // trail below Home, published as BreadcrumbList
 }
-const { lang, path, title: pageTitle, brand = true, description, active, ctaPage = 'home', hideCta = false, noindex = false, ogType = 'website', ctaTitle } = Astro.props;
+const { lang, path, title: pageTitle, brand = true, description, active, ctaPage = 'home', hideCta = false, noindex = false, ogType = 'website', ctaTitle, crumbs } = Astro.props;
 // Composed in one place so a change of brand label is one i18n key, not a hundred title strings.
 const title = brand ? `${pageTitle}${t(lang, 'seo.title_suffix')}` : pageTitle;
 const canonical = new URL(localePath(lang, path), Astro.site);
 // Open Graph locales for a Moroccan site: French and Arabic as written in Morocco.
 const OG_LOCALE: Record<Locale, string> = { fr: 'fr_MA', en: 'en_US', ar: 'ar_MA' };
+const breadcrumbs = crumbs && {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [[t(lang, 'common.nav_home'), '/'], ...crumbs].map(([name, p], i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name,
+    item: new URL(localePath(lang, p), Astro.site).href,
+  })),
+};
 ---
 <!doctype html>
 <html lang={lang} dir={dir(lang)}>
@@ -54,6 +65,7 @@ const OG_LOCALE: Record<Locale, string> = { fr: 'fr_MA', en: 'en_US', ar: 'ar_MA
     {lang === 'ar' && (
       <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
     )}
+    {breadcrumbs && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbs)} />}
     <slot name="head" />
   </head>
   <body>

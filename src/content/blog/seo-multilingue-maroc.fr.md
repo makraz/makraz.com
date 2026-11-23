@@ -7,6 +7,7 @@ date: 2026-08-04
 author: "Hamza Makraz"
 category: "SEO"
 authorRole: "Fondateur, MAKRAZ — ingénieur logiciel"
+services: [referencement-naturel-seo, sites-internet]
 ---
 
 Un site marocain qui veut être trouvé doit composer avec une réalité que peu d'outils SEO anticipent : le même client peut chercher en français le matin et en arabe le soir, avec un vocabulaire technique souvent emprunté à l'anglais. Traduire trois fois la même page ne règle pas le problème — et peut l'aggraver.

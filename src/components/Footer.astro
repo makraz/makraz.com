@@ -1,5 +1,5 @@
 ---
-import { SHOW_BLOG_IN_MENUS } from '../lib/flags.mjs';
+import { BLOG_MAINTENANCE } from '../lib/flags.mjs';
 import { localePath, t, type Locale } from '../i18n';
 import logoBlack from '../assets/logo-black.png';
 
@@ -9,7 +9,7 @@ const links = [
   ['/', 'common.nav_home'],
   ['/services', 'common.nav_services'],
   ['/portfolio', 'common.nav_portfolio'],
-  ...(SHOW_BLOG_IN_MENUS ? [['/blog', 'common.nav_blog']] as const : []),
+  ...(!BLOG_MAINTENANCE ? [['/blog', 'common.nav_blog']] as const : []),
   ['/a-propos', 'common.nav_about'],
   ['/contact', 'common.nav_contact'],
 ] as const;
@@ -33,7 +33,7 @@ const links = [
       <div class="flex flex-col gap-3 text-[14px] leading-[1.43]">
         <div class="mb-1 text-[16px] font-medium">{t(lang, 'home.ft_contact')}</div>
         <a href="mailto:contact@makraz.com" class="text-ink hover:underline">contact@makraz.com</a>
-        <a href="https://makraz.com" class="text-ink hover:underline">makraz.com</a>
+        <a href={localePath(lang, '/')} class="text-ink hover:underline">makraz.com</a>
         <a href="tel:+212661764392" class="text-ink hover:underline">+212 6 61 76 43 92</a>
         <a
           href="https://share.google/WllPHd9fKnFBdVmS0"

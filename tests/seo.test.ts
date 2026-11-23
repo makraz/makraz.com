@@ -9,8 +9,8 @@ const SEO_KEYS = Object.keys(fr as Record<string, string>).filter((k) => k.start
 const TITLES = SEO_KEYS.filter((k) => k.endsWith('_title'));
 const DESCS = SEO_KEYS.filter((k) => k.endsWith('_desc'));
 
-// These keys hold only the page's own part of the title: Base appends seo.title_suffix ("— MAKRAZ,
-// agence de communication"), which may run past what Google displays because it is truncated first.
+// These keys hold only the page's own part of the title: Base appends seo.title_suffix (" — MAKRAZ"),
+// which may run past what Google displays because it is truncated first.
 // So the length budget below applies to the page's own part.
 
 describe('page titles', () => {

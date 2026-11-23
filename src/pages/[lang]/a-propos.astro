@@ -3,7 +3,8 @@ import Base from '../../layouts/Base.astro';
 import Kicker from '../../components/Kicker.astro';
 import SectionIntro from '../../components/SectionIntro.astro';
 import ImagePlaceholder from '../../components/ImagePlaceholder.astro';
-import { t, type Locale } from '../../i18n';
+import { t, localePath, type Locale } from '../../i18n';
+import { ORG_ID, PERSON_ID, PERSON_SAME_AS } from '../../lib/entities';
 
 // French only: English and Arabic serve this page at /about (see about.astro).
 export function getStaticPaths() {
@@ -13,8 +14,27 @@ const lang = Astro.params.lang as Locale;
 
 const title = t(lang, 'seo.about_title');
 const description = t(lang, 'seo.about_desc');
+// Every article's author links here, so this page carries the Person the articles refer to by @id.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  url: new URL(localePath(lang, '/a-propos'), Astro.site).href,
+  inLanguage: lang,
+  mainEntity: { '@id': ORG_ID },
+  about: {
+    '@type': 'Person',
+    '@id': PERSON_ID,
+    name: 'Hamza Makraz',
+    jobTitle: t(lang, 'about.t_role'),
+    description: t(lang, 'about.t_bio'),
+    worksFor: { '@id': ORG_ID },
+    url: new URL(localePath(lang, '/a-propos'), Astro.site).href,
+    ...(PERSON_SAME_AS.length ? { sameAs: PERSON_SAME_AS } : {}),
+  },
+};
 ---
 <Base lang={lang} path="/a-propos" title={title} description={description} active="about" ctaPage="about">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <!-- Hero -->
   <section class="mk-container pb-16 pt-16">
     <Kicker class="mb-3">{t(lang, 'about.hero_kicker')}</Kicker>
@@ -95,7 +115,7 @@ const description = t(lang, 'seo.about_desc');
       <div class="grid min-w-0 flex-1 grid-cols-[280px_1fr] items-center gap-10 max-[900px]:grid-cols-1">
         <ImagePlaceholder ratio="1/1" class="max-w-[280px]" radius="media" />
         <div>
-          <div class="text-[16px] font-bold tracking-[-0.01em]">Hamza Makraz</div>
+          <h3 class="m-0 text-[16px] font-bold tracking-[-0.01em]">Hamza Makraz</h3>
           <div class="my-[6px] mb-[18px] text-[14px] text-txt-4">{t(lang, 'about.t_role')}</div>
           <p class="m-0 text-[15px] leading-[1.65] text-txt-2">{t(lang, 'about.t_bio')}</p>
         </div>

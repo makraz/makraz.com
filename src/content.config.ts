@@ -35,6 +35,8 @@ const blog = defineCollection({
     updated: z.coerce.date().optional(),
     // Optional: heading of the closing call-to-action band, instead of the generic blog one.
     ctaTitle: z.string().optional(),
+    // Optional: service slugs (French route keys) whose pages list this article under "Further reading".
+    services: z.array(z.string()).optional(),
   }),
 });
 

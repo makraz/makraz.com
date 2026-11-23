@@ -1,4 +1,5 @@
 ---
-const { class: className = '' } = Astro.props;
+// `as="h2"` when the label names a section, so the page outline has real headings.
+const { class: className = '', as: Tag = 'div' } = Astro.props;
 ---
-<div class:list={['text-kicker', className]}><slot /></div>
+<Tag class:list={['text-kicker', className]}><slot /></Tag>

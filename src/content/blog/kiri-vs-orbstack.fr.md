@@ -17,6 +17,7 @@ faq:
     a: "OrbStack, dans notre test (Kiri 0.2.2 contre OrbStack 2.2.5 sur un M4 Pro) : il utilisait un tiers du CPU de Kiri lorsque le projet était au repos, et son score « impact énergétique » de macOS était 24 % plus bas sur la suite de tests (un score relatif, pas des watts). Nous n'avons pas mesuré directement l'autonomie."
   - q: "DDEV fonctionne-t-il avec Kiri ?"
     a: "Oui. Par défaut, DDEV se rabat sur les ports 30000/30001, car le proxy de Kiri occupe les ports 80 et 443. Déplacez ce proxy avec `launchctl setenv KIRI_HTTP_PORT 8880` et `launchctl setenv KIRI_HTTPS_PORT 8843`, redémarrez Kiri avec `launchctl kickstart -k gui/$(id -u)/dev.kiri.daemon` (cela arrête les conteneurs en cours), puis lancez `ddev poweroff && ddev start`. Le réglage dure jusqu'à la déconnexion ou au redémarrage du Mac ; un élément d'ouverture de session le rend permanent."
+services: [devops-cloud]
 ---
 
 **En bref :** dans notre comparaison de Kiri 0.2.2 et OrbStack 2.2.5 sur un M4 Pro avec une vraie stack PHP sous DDEV, Kiri utilisait environ un sixième de la RAM d'OrbStack à vide (environ 0,7 Go de moins avec le projet lancé) et a traité 2,6× plus de transactions Postgres qu'OrbStack lors de notre test. OrbStack utilisait un tiers du CPU de Kiri lorsque le projet était au repos et était plus rapide sur les petits fichiers. La suite de tests complète a pris à peu près le même temps sur les deux. Sur batterie, prenez OrbStack (d'après sa charge CPU plus faible ; nous n'avons pas mesuré l'autonomie) ; à court de RAM, prenez Kiri.

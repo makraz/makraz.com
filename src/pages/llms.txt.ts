@@ -31,7 +31,7 @@ const PAGES: [path: string, titleKey: string, descKey: string][] = [
 ];
 
 /** Case-study pages, keyed by the portfolio slug that has its own page. */
-const CASE_SLUGS = ['farblieferant', 'phpmorocco', 'aya'] as const;
+const CASE_SLUGS = ['farblieferant', 'phpmorocco', 'aya', 'palmarena'] as const;
 
 /**
  * One markdown link line. Newlines inside a description would break the list, and llms.txt is
@@ -52,7 +52,7 @@ export const GET: APIRoute = async () => {
     '',
     'Agence de communication basée au Maroc. Ingénierie, design, IA et automatisation, croissance digitale.',
     'Le site est publié en trois langues — français (par défaut), anglais et arabe — sous /fr, /en et /ar.',
-    'Les chemins d\'URL sont identiques dans les trois langues ; seul le préfixe de langue change.',
+    'Les URL anglaises et arabes utilisent des slugs anglais (ex. /fr/a-propos, /en/about, /ar/about).',
     `Sitemap : ${SITE}/sitemap-index.xml`,
   ];
 

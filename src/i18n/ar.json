@@ -267,7 +267,7 @@
   "legal.ft_nav": "روابط",
   "legal.ft_contact": "التواصل",
   "seo.home_title": "MAKRAZ — وكالة رقمية في المغرب",
-  "seo.title_suffix": " — MAKRAZ، وكالة رقمية",
+  "seo.title_suffix": " — MAKRAZ",
   "seo.blog_title": "المدونة: تطوير الويب والسيو والمنتجات الرقمية بالمغرب",
   "seo.blog_maint_title": "المدونة قيد الصيانة",
   "seo.home_desc": "وكالة رقمية في المغرب. نساعد الشركات الناشئة والصغيرة والمتوسطة والقائمة على بناء أعمالها الرقمية وتحديثها وتنميتها، بفريق واحد مسؤول.",
@@ -391,6 +391,7 @@
   "service.discuss": "لنتحدّث عن ذلك →",
   "service.read_case": "اقرأ دراسة الحالة →",
   "service.see_project": "اطّلع على المشروع →",
+  "service.reading": "للقراءة في المدونة",
   "services.pillar_link": "استكشف هذا المجال →",
   "home.w4_tag": "الصحة · ayapsychomotricite.ma"
 }

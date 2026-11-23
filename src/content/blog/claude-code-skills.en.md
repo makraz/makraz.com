@@ -17,6 +17,7 @@ faq:
     a: "Claude Code has its own built-in `/code-review` with the same name, and which one the short name runs depends on the app and version. The full name always runs Matt Pocock's skill."
   - q: "Do Ponytail and Matt Pocock's skills work with other coding agents?"
     a: "Yes. Both collections can also be installed in other agents such as Codex; each README explains how."
+services: [developpement, audit-ingenierie]
 ---
 
 **In short:** Claude Code skills are short instruction files that give the agent good habits. I use Matt Pocock's skills to plan (`/mattpocock-skills:wayfinder`, `/mattpocock-skills:grill-with-docs`), Ponytail to keep every change small, and both `/ponytail-review` and `/mattpocock-skills:code-review` before every merge.

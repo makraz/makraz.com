@@ -7,6 +7,7 @@ date: 2026-07-01
 author: "Hamza Makraz"
 category: "Ingénierie"
 authorRole: "Fondateur, MAKRAZ — ingénieur logiciel"
+services: [mvp-lancement-rapide, applications-web-saas]
 ---
 
 Un MVP doit sortir vite : c'est sa raison d'être. Mais « vite » est devenu une excuse pour « mal ». Résultat : la majorité des MVP qui trouvent leur marché doivent être réécrits dans les dix-huit mois — au moment précis où l'entreprise devrait accélérer.

@@ -7,6 +7,7 @@ date: 2026-08-04
 author: "Hamza Makraz"
 category: "Conseil"
 authorRole: "Fondateur, MAKRAZ — ingénieur logiciel"
+services: [sites-internet, applications-web-saas]
 ---
 
 La question arrive presque toujours sous forme de budget : « combien pour un site ? ». C'est la mauvaise entrée. Un site vitrine et une plateforme sur mesure ne sont pas deux niveaux de qualité du même produit ; ce sont deux objets différents, qui résolvent des problèmes différents et vieillissent différemment.

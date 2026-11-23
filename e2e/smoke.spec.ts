@@ -226,7 +226,7 @@ test('the method comes before the service lines and appears only once', async ({
 test('the home page declares a local business with an offer catalogue', async ({ page }) => {
   await page.goto('/fr');
   const raw = await page.locator('script[type="application/ld+json"]').first().textContent();
-  const data = JSON.parse(raw ?? '{}');
+  const data = JSON.parse(raw ?? '{}')['@graph'][0];
   // ProfessionalService is the LocalBusiness subtype that earns local results.
   expect(data['@type']).toContain('ProfessionalService');
   expect(data.address.addressLocality).toBe('Marrakech');
@@ -355,7 +355,7 @@ for (const lang of langs) {
     expect(count).toBeGreaterThanOrEqual(3);
     // It used to render two teaser cards for unwritten articles with no href, so every headline
     // on this page must now lead somewhere.
-    const headings = page.locator('section .text-\\[21px\\]');
+    const headings = page.locator('section h2');
     await expect(headings).toHaveCount(count);
     for (const href of await cards.evaluateAll((els) => els.map((e) => e.getAttribute('href') ?? ''))) {
       expect((await page.request.get(href)).status()).toBe(200);
@@ -371,16 +371,17 @@ test('the blog hub is noindex while the articles stay indexable', async ({ page 
   await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
 });
 
-// --- Blog kept out of the menus ---
+// --- Blog kept out of the header ---
 
-// Covers the header (desktop and mobile) and footer on every non-blog page. The blog's own pages
-// link to their articles, so they are left out.
+// Covers the header (desktop and mobile) on every non-blog page. The footer always links the blog,
+// so crawlers can reach it; the blog's own pages link to their articles, so they are left out.
 for (const lang of langs) {
-  test(`no /${lang} page links to the blog`, async ({ page }) => {
+  test(`no /${lang} page header links to the blog`, async ({ page }) => {
     test.skip(SHOW_BLOG_IN_MENUS, 'blog is in the menus');
     for (const path of paths.filter((p) => p !== '/blog')) {
       await page.goto(`/${lang}${path}`);
-      await expect(page.locator('a[href*="/blog"]'), `/${lang}${path}`).toHaveCount(0);
+      await expect(page.locator('header a[href*="/blog"]'), `/${lang}${path}`).toHaveCount(0);
+      await expect(page.locator(`footer a[href="/${lang}/blog"]`), `/${lang}${path}`).toHaveCount(1);
     }
   });
 }

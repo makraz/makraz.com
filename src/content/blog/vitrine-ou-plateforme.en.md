@@ -7,6 +7,7 @@ date: 2026-08-04
 author: "Hamza Makraz"
 category: "Advisory"
 authorRole: "Founder, MAKRAZ — software engineer"
+services: [sites-internet, applications-web-saas]
 ---
 
 The question almost always arrives as a budget: "how much for a website?". That is the wrong way in. A brochure site and a custom platform are not two quality tiers of the same product; they are different objects, solving different problems and ageing in different ways.

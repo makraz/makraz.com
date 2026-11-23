@@ -58,7 +58,7 @@ const faqs = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6'] as const;
       <div class="border-t border-line">
         {faqs.map((q) => (
           <details class="border-b border-line">
-            <summary class="cursor-pointer py-[22px] text-[17px] font-bold">{t(lang, `contact.${q}_t`)}</summary>
+            <summary class="cursor-pointer py-[22px]"><h3 class="m-0 inline text-[17px] font-bold">{t(lang, `contact.${q}_t`)}</h3></summary>
             <p class="m-0 pb-6 text-[15px] leading-[1.65] text-txt-2">{t(lang, `contact.${q}_d`)}</p>
           </details>
         ))}

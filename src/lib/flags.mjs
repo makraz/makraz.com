@@ -9,9 +9,8 @@
 export const BLOG_MAINTENANCE = false;
 
 /**
- * Whether Blog appears in the header (desktop and mobile) and footer menus. Independent of
- * maintenance: with this false the blog stays out of every menu even once BLOG_MAINTENANCE is
- * lifted, and is reached only through direct links and search.
+ * Whether Blog appears in the header menus (desktop and mobile). The footer always links the blog
+ * outside maintenance, so the articles are never orphans: crawlers find pages through links.
  */
 export const BLOG_IN_MENUS = false;
 

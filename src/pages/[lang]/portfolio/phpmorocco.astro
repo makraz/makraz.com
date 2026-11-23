@@ -22,7 +22,7 @@ const { Content } = await render(entry);
 const title = t(lang, 'seo.case_phpmorocco_title');
 const description = t(lang, 'seo.case_phpmorocco_desc');
 ---
-<Base lang={lang} path="/portfolio/phpmorocco" title={title} description={description} active="portfolio" ctaPage="case_phpmorocco">
+<Base lang={lang} path="/portfolio/phpmorocco" title={title} description={description} active="portfolio" ctaPage="case_phpmorocco" crumbs={[[t(lang, 'common.nav_portfolio'), '/portfolio'], [entry.data.project, '/portfolio/phpmorocco']]}>
   <!-- Hero -->
   <section class="mk-container pb-14 pt-16">
     <a href={localePath(lang, '/portfolio')} class="text-[14px] font-semibold text-txt-4 hover:text-ink">{t(lang, 'case_phpmorocco.back')}</a>

@@ -7,6 +7,7 @@ date: 2026-07-01
 author: "Hamza Makraz"
 category: "Engineering"
 authorRole: "Founder, MAKRAZ — software engineer"
+services: [mvp-lancement-rapide, applications-web-saas]
 ---
 
 An MVP has to ship fast: that's its whole point. But 'fast' has become an excuse for 'badly'. The result: most MVPs that find their market must be rewritten within eighteen months — exactly when the business should be accelerating.

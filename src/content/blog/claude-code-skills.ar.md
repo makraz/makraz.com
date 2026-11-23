@@ -17,6 +17,7 @@ faq:
     a: "لأن في Claude Code أمراً مدمجاً بالاسم نفسه `/code-review`، والأمر الذي يشغّله الاسم القصير يتوقف على التطبيق والإصدار. أما الاسم الكامل فيشغّل دائماً مهارة Matt Pocock."
   - q: "هل تعمل Ponytail ومهارات Matt Pocock مع وكلاء برمجة آخرين؟"
     a: "نعم. يمكن تثبيت المجموعتين في وكلاء آخرين مثل Codex؛ ويشرح كل README الطريقة."
+services: [developpement, audit-ingenierie]
 ---
 
 **باختصار:** مهارات Claude Code ملفات تعليمات قصيرة تمنح الوكيل عادات جيدة. أستعمل مهارات Matt Pocock للتخطيط (`/mattpocock-skills:wayfinder` و`/mattpocock-skills:grill-with-docs`)، وPonytail لإبقاء كل تغيير صغيراً، و`/ponytail-review` و`/mattpocock-skills:code-review` معاً قبل كل دمج.

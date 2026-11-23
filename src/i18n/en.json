@@ -267,7 +267,7 @@
   "legal.ft_nav": "Navigation",
   "legal.ft_contact": "Contact",
   "seo.home_title": "MAKRAZ — Digital agency in Morocco",
-  "seo.title_suffix": " — MAKRAZ, digital agency",
+  "seo.title_suffix": " — MAKRAZ",
   "seo.blog_title": "Blog: web development, SEO and digital products in Morocco",
   "seo.blog_maint_title": "Blog under maintenance",
   "seo.home_desc": "Digital agency in Morocco. We help startups, SMEs and established companies build, modernize and grow their digital business with one accountable team.",
@@ -391,6 +391,7 @@
   "service.discuss": "Discuss it with us →",
   "service.read_case": "Read the case study →",
   "service.see_project": "See the project →",
+  "service.reading": "Further reading",
   "services.pillar_link": "Explore this craft →",
   "home.w4_tag": "Healthcare · ayapsychomotricite.ma"
 }

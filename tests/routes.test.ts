@@ -45,4 +45,12 @@ describe('localized URL slugs', () => {
       }
     }
   });
+
+  it('tags articles only with services that exist', () => {
+    const dir = new URL('../src/content/blog/', import.meta.url);
+    for (const file of readdirSync(dir).filter((f) => f.endsWith('.md'))) {
+      const tags = readFileSync(new URL(file, dir), 'utf8').match(/^services: \[(.*)\]$/m)?.[1].split(',') ?? [];
+      for (const tag of tags) expect(services, `${file} tags ${tag}`).toContain(tag.trim());
+    }
+  });
 });

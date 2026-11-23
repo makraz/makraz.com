@@ -18,6 +18,7 @@ faq:
     a: "Ajoutez-le sous `extra_allowed_domains` dans `.ddev/claude.yaml`, puis lancez `ddev claude rebuild && ddev restart`."
   - q: "ddev-claude fonctionne-t-il sans Mutagen ?"
     a: "Oui. Sans Mutagen, le projet est monté depuis votre machine ; avec Mutagen activé, le conteneur partage le volume synchronisé de DDEV, bien plus rapide sur macOS lors de nos tests."
+services: [devops-cloud]
 ---
 
 **En bref :** ddev-claude est un add-on DDEV open source qui fait tourner Claude Code en mode YOLO (sans demandes de permission) dans son propre conteneur. Un pare-feu limite son trafic sortant à Anthropic, GitHub, vos services DDEV, votre machine (la passerelle de l'hôte) et les domaines autorisés par vous ou par vos extras activés, avec des failles documentées comme le tunnel DNS, le ping et les données envoyées via des hôtes autorisés comme GitHub. Il protège contre les fuites de données accidentelles, mais ce n'est pas un coffre-fort pour les secrets de votre projet, et les fichiers qu'il écrit dans `.git/` ou `.ddev/` peuvent s'exécuter sur votre machine. Installez-le avec `ddev add-on get makraz/ddev-claude`.

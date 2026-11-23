@@ -1,14 +1,14 @@
 ---
 project: Farblieferant
 lang: fr
-kicker: "Étude de cas · E-commerce · Allemagne"
+kicker: "Étude de cas · E-commerce · Europe"
 ---
 
 ## Le contexte
 
-Farblieferant distribue des peintures et matériaux de construction sur le marché allemand, auprès de deux publics qui n'achètent pas de la même façon : des artisans et professionnels du bâtiment, qui commandent régulièrement et en volume, et des particuliers qui rénovent une pièce et ont besoin d'être guidés.
+Farblieferant distribue des peintures et matériaux de construction sur le marché européen, auprès de deux publics qui n'achètent pas de la même façon : des artisans et professionnels du bâtiment, qui commandent régulièrement et en volume, et des particuliers qui rénovent une pièce et ont besoin d'être guidés.
 
-Vendre de la peinture en ligne n'est pas vendre un produit standard. Une même référence existe en plusieurs contenances et en plus de mille teintes ; le bon choix dépend du support, de la pièce et de l'exposition ; et une erreur de quantité se paie en chantier interrompu. À cela s'ajoutent les attentes du commerce en ligne allemand : information produit complète, prix et frais de livraison affichés sans ambiguïté, mentions légales et droit de rétractation irréprochables. La confiance se gagne avant le panier.
+Vendre de la peinture en ligne n'est pas vendre un produit standard. Une même référence existe en plusieurs contenances et en plus de mille teintes ; le bon choix dépend du support, de la pièce et de l'exposition ; et une erreur de quantité se paie en chantier interrompu. À cela s'ajoutent les attentes du commerce en ligne européen : information produit complète, prix et frais de livraison affichés sans ambiguïté, mentions légales et droit de rétractation irréprochables. La confiance se gagne avant le panier.
 
 ## La solution
 

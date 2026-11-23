@@ -5,7 +5,7 @@ kind: leaf
 pillar: developpement
 order: 3
 title: "Websites"
-seoTitle: "Website design and development in Marrakech"
+seoTitle: "Website design and development in Morocco"
 lead: "Business and institutional websites: fast, kept current, and built to turn a visit into an enquiry."
 project: aya
 included:
@@ -16,7 +16,7 @@ included:
   - title: Multilingual
     description: "French, Arabic, English — each language on its own URL, with Arabic in full RTL rather than a mirrored afterthought."
   - title: Technical SEO
-    description: "Tags, structured data, sitemap, load speed, and the local signals that decide whether you are found in Marrakech or elsewhere."
+    description: "Tags, structured data, sitemap, load speed, and the local signals that decide whether you are found in Morocco or elsewhere."
   - title: Getting in touch
     description: "Form, WhatsApp, phone — the shortest path, based on how your customers actually make contact."
   - title: Editorial independence

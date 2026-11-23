@@ -5,8 +5,8 @@ kind: leaf
 pillar: developpement
 order: 3
 title: "Sites internet"
-seoTitle: "Création de site web à Marrakech"
-heading: "Création de site web à Marrakech"
+seoTitle: "Création de site web au Maroc"
+heading: "Création de site web au Maroc"
 lead: "Sites vitrines et institutionnels : rapides, tenus à jour, et pensés pour transformer une visite en prise de contact."
 project: aya
 included:
@@ -17,7 +17,7 @@ included:
   - title: Multilingue
     description: "Français, arabe, anglais — chaque langue sur sa propre adresse, avec l'arabe en RTL complet et non en simple miroir."
   - title: Référencement technique
-    description: "Balises, données structurées, plan de site, vitesse de chargement, et les signaux locaux qui comptent pour être trouvé à Marrakech ou ailleurs."
+    description: "Balises, données structurées, plan de site, vitesse de chargement, et les signaux locaux qui comptent pour être trouvé au Maroc ou ailleurs."
   - title: Prise de contact
     description: "Formulaire, WhatsApp, téléphone — le chemin le plus court selon la façon dont vos clients vous contactent vraiment."
   - title: Autonomie éditoriale

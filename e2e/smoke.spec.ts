@@ -176,7 +176,7 @@ test('the PHP Morocco case study renders its content and meta strip', async ({ p
   await page.goto('/fr/portfolio/phpmorocco');
   await expect(page.getByRole('heading', { level: 1, name: 'PHP Morocco' })).toBeVisible();
   // Three body sections come from the content collection, not from i18n keys.
-  await expect(page.getByRole('heading', { level: 2 })).toHaveCount(4); // 3 sections + CTA band
+  await expect(page.getByRole('heading', { level: 2 })).toHaveCount(3); // 3 sections; the CTA band is a paragraph, not a heading
   await expect(page.locator('a[href="https://phpmorocco.ma"]')).toBeVisible();
   await expect(page.getByText('Plateforme · i18n · SEO')).toBeVisible();
 });
@@ -336,8 +336,8 @@ for (const lang of langs) {
   test(`the Aya case study renders in ${lang}`, async ({ page }) => {
     await page.goto(`/${lang}/portfolio/aya`);
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-    // Three body sections from the content collection, plus the CTA band heading.
-    await expect(page.getByRole('heading', { level: 2 })).toHaveCount(4);
+    // Three body sections from the content collection; the CTA band is not a heading.
+    await expect(page.getByRole('heading', { level: 2 })).toHaveCount(3);
     await expect(page.locator('a[href="https://www.ayapsychomotricite.ma"]')).toBeVisible();
     // The gallery pairs the French services grid with the Arabic RTL view.
     await expect(page.locator('section img')).toHaveCount(3);
@@ -363,10 +363,10 @@ for (const lang of langs) {
   });
 }
 
-test('the blog hub is noindex while the articles stay indexable', async ({ page }) => {
+test('the blog hub and the articles are indexable', async ({ page }) => {
   test.skip(BLOG_MAINTENANCE, 'blog is in maintenance');
   await page.goto('/fr/blog');
-  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
+  await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
   await page.goto('/fr/blog/seo-multilingue-maroc');
   await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
 });

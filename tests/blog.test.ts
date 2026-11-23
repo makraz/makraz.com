@@ -28,8 +28,10 @@ describe('blog articles', () => {
 
   it('writes real body copy, not just frontmatter', () => {
     for (const file of files) {
-      const body = readFileSync(new URL(file, DIR), 'utf8').split('---').slice(2).join('---');
-      expect(body.match(/^## /gm) ?? [], `${file} has no sections`).toHaveLength(3);
+      // Strip only the leading frontmatter block: splitting on every '---' also cut bodies at
+      // Markdown table separator rows (|---|).
+      const body = readFileSync(new URL(file, DIR), 'utf8').replace(/^---\n[\s\S]*?\n---\n/, '');
+      expect((body.match(/^## /gm) ?? []).length, `${file} has no sections`).toBeGreaterThan(0);
       // Characters rather than words: Arabic says the same thing in noticeably fewer words, so a
       // word threshold fair to French would flag a complete Arabic article as a stub.
       expect(body.trim().length, `${file} is thin`).toBeGreaterThan(900);

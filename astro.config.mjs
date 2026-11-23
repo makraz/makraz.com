@@ -112,11 +112,10 @@ export default defineConfig({
     sitemap({
       i18n: { defaultLocale: 'fr', locales: { fr: 'fr', en: 'en', ar: 'ar' } },
       // Pages that carry noindex are kept out of the sitemap too, so the two signals agree:
-      // /mycard is a QR destination rather than search content, and the /blog hub stays out until
-      // its articles have had an editorial pass. Individual articles stay listed.
-      // In blog maintenance the articles go too: a sitemap should only list URLs that answer 200.
+      // /mycard is a QR destination rather than search content.
+      // In blog maintenance the blog goes too: a sitemap should only list URLs that answer 200.
       filter: (page) =>
-        !/\/mycard\/?$/.test(page) && !(BLOG_MAINTENANCE ? /\/blog(\/|$)/ : /\/blog\/?$/).test(page),
+        !/\/mycard\/?$/.test(page) && !(BLOG_MAINTENANCE && /\/blog(\/|$)/.test(page)),
       serialize(item) {
         const lastmod = lastmodFor(item.url);
         if (lastmod) item.lastmod = lastmod;

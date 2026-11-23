@@ -17,10 +17,9 @@ const LOCALE_LABEL: Record<Locale, string> = { fr: 'Français', en: 'English', a
 
 /**
  * The static pages worth listing, as [path, i18n key for the description]. Deliberately not every
- * route: /mycard is a QR destination rather than readable content, and the /blog hub carries
- * noindex until its articles have had an editorial pass. Both are excluded from the sitemap for
- * the same reason, so the two files agree on what this site considers content. Individual
- * articles are listed below regardless, since those are genuine content.
+ * route: /mycard is a QR destination rather than readable content (it is kept out of the sitemap
+ * too), and the /blog hub is only a list of links: the articles themselves are listed below,
+ * since those are the genuine content.
  */
 const PAGES: [path: string, titleKey: string, descKey: string][] = [
   ['', 'common.nav_home', 'seo.home_desc'],

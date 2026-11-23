@@ -6,7 +6,7 @@
  * temporary, so the articles keep their place in the index while it lasts. Keep it short: weeks,
  * not months, or Google starts treating the 503s as permanent. Set to false to restore the blog.
  */
-export const BLOG_MAINTENANCE = true;
+export const BLOG_MAINTENANCE = false;
 
 /**
  * Whether Blog appears in the header (desktop and mobile) and footer menus. Independent of

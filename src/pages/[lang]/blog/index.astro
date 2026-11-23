@@ -30,13 +30,8 @@ const monthYear = new Intl.DateTimeFormat(lang === 'ar' ? 'ar-MA' : lang, { mont
 const title = t(lang, 'seo.blog_title');
 const description = t(lang, 'blog.hero_sub');
 ---
-{/*
-  noindex while the journal holds a single article: a ~130-word hub page ranks for nothing and
-  counts against sitewide quality. The articles themselves stay indexable. Remove `noindex` (and
-  the hub's exclusion from the sitemap filter in astro.config.mjs) once there are three real pieces.
-*/}
 {BLOG_MAINTENANCE ? <BlogMaintenance lang={lang} path="/blog" /> : (
-<Base lang={lang} path="/blog" title={title} description={description} active="blog" ctaPage="blog" noindex>
+<Base lang={lang} path="/blog" title={title} description={description} active="blog" ctaPage="blog">
   <!-- Hero -->
   <section class="mk-container pb-16 pt-16">
     <Kicker class="mb-3">{t(lang, 'blog.kicker_page')}</Kicker>

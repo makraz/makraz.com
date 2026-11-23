@@ -27,6 +27,14 @@ const blog = defineCollection({
     // Shown in the card's meta line. Localized per file rather than looked up, since the set of
     // categories is editorial and each translation names it in its own words.
     category: z.string(),
+    // Optional questions shown under the article and published as FAQPage structured data.
+    // Backtick-wrapped spans (`/command`, `.env`) render as code, so they stay left-to-right on
+    // Arabic pages; the backticks are stripped from the structured data.
+    faq: z.array(z.object({ q: z.string(), a: z.string() })).optional(),
+    // Optional: last significant update, published as dateModified (defaults to `date`).
+    updated: z.coerce.date().optional(),
+    // Optional: heading of the closing call-to-action band, instead of the generic blog one.
+    ctaTitle: z.string().optional(),
   }),
 });
 

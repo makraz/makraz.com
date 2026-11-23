@@ -15,11 +15,15 @@ interface Props {
   ctaPage?: string; // namespace for CtaBand keys, default 'home'
   hideCta?: boolean;
   noindex?: boolean; // keep a page out of search results while it is too thin to earn a place
+  ogType?: 'website' | 'article'; // 'article' for blog posts
+  ctaTitle?: string; // overrides the CtaBand heading, e.g. per blog post
 }
-const { lang, path, title: pageTitle, brand = true, description, active, ctaPage = 'home', hideCta = false, noindex = false } = Astro.props;
+const { lang, path, title: pageTitle, brand = true, description, active, ctaPage = 'home', hideCta = false, noindex = false, ogType = 'website', ctaTitle } = Astro.props;
 // Composed in one place so a change of brand label is one i18n key, not a hundred title strings.
 const title = brand ? `${pageTitle}${t(lang, 'seo.title_suffix')}` : pageTitle;
 const canonical = new URL(localePath(lang, path), Astro.site);
+// Open Graph locales for a Moroccan site: French and Arabic as written in Morocco.
+const OG_LOCALE: Record<Locale, string> = { fr: 'fr_MA', en: 'en_US', ar: 'ar_MA' };
 ---
 <!doctype html>
 <html lang={lang} dir={dir(lang)}>
@@ -34,11 +38,15 @@ const canonical = new URL(localePath(lang, path), Astro.site);
       <link rel="alternate" hreflang={l} href={new URL(localePath(l, path), Astro.site)} />
     ))}
     <link rel="alternate" hreflang="x-default" href={new URL(localePath('fr', path), Astro.site)} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL('/og-image.png', Astro.site)} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="MAKRAZ" />
+    <meta property="og:locale" content={OG_LOCALE[lang]} />
+    {locales.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={OG_LOCALE[l]} />)}
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -51,7 +59,7 @@ const canonical = new URL(localePath(lang, path), Astro.site);
   <body>
     <Header lang={lang} path={path} active={active} />
     <slot />
-    {!hideCta && <CtaBand lang={lang} page={ctaPage} />}
+    {!hideCta && <CtaBand lang={lang} page={ctaPage} title={ctaTitle} />}
     <Footer lang={lang} />
   </body>
 </html>

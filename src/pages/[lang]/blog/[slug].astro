@@ -29,21 +29,91 @@ const { post } = Astro.props;
 // No props exist in maintenance, so the article is only rendered when the blog is live; a null
 // Content is exactly the maintenance case.
 const Content = BLOG_MAINTENANCE ? null : (await render(post)).Content;
+
+// Real date and reading time per article (the meta line used to be one fixed string for every post).
+const data = post?.data;
+const fullDate = new Intl.DateTimeFormat(lang === 'ar' ? 'ar-MA' : lang, { day: 'numeric', month: 'long', year: 'numeric' });
+const minutes = post ? Math.max(1, Math.round((post.body ?? '').split(/\s+/).length / 200)) : 0;
+const isoDate = data?.date.toISOString().slice(0, 10);
+const isoUpdated = data?.updated?.toISOString().slice(0, 10);
+const url = data && new URL(localePath(lang, `/blog/${data.slug}`), Astro.site).href;
+
+// FAQ text may wrap commands and paths in backticks: rendered as <code> (odd parts after the
+// split), stripped for the structured data.
+// In Arabic, the code keeps its left-to-right direction through isolate marks (U+2066…U+2069),
+// so `/command` doesn't show as `command/` in an RTL snippet.
+const plain = (s: string) => (lang === 'ar' ? s.replace(/`([^`]+)`/g, '⁦$1⁩') : s.replace(/`/g, ''));
+const codeParts = (s: string) => s.split(/`([^`]+)`/);
+
+// BlogPosting (plus FAQPage when the article has questions): who wrote what, when, in which
+// language, for search engines and AI answer engines.
+const jsonLd = data && [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: data.title,
+    description: data.description,
+    inLanguage: lang,
+    datePublished: isoDate,
+    dateModified: (data.updated ?? data.date).toISOString().slice(0, 10),
+    mainEntityOfPage: url,
+    image: new URL('/og-image.png', Astro.site).href,
+    author: { '@type': 'Person', name: data.author, jobTitle: data.authorRole, url: new URL(localePath(lang, '/a-propos'), Astro.site).href },
+    publisher: { '@type': 'Organization', name: 'MAKRAZ', url: Astro.site?.href, logo: new URL('/logo.png', Astro.site).href }, // fixed path, so the URL survives asset rebuilds
+  },
+  ...(data.faq?.length
+    ? [{
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        inLanguage: lang,
+        mainEntity: data.faq.map((item) => ({
+          '@type': 'Question',
+          name: plain(item.q),
+          acceptedAnswer: { '@type': 'Answer', text: plain(item.a) },
+        })),
+      }]
+    : []),
+];
 ---
 {!Content ? <BlogMaintenance lang={lang} path={`/blog/${Astro.params.slug}`} /> : (
-<Base lang={lang} path={`/blog/${post.data.slug}`} title={post.data.title} description={post.data.description} active="blog" ctaPage="article">
+<Base lang={lang} path={`/blog/${post.data.slug}`} title={post.data.title} description={post.data.description} active="blog" ctaPage="article" ogType="article" ctaTitle={post.data.ctaTitle}>
+  <meta slot="head" property="article:published_time" content={isoDate} />
+  {isoUpdated && <meta slot="head" property="article:modified_time" content={isoUpdated} />}
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <article class="mk-container mx-auto max-w-[760px] pb-24 pt-16">
     <a href={localePath(lang, '/blog')} class="text-[14px] font-semibold text-txt-4 hover:text-ink">{t(lang, 'article.back')}</a>
-    <div class="mt-9 mb-5 text-[12px] font-semibold uppercase tracking-[.2em] text-txt-4">{t(lang, 'article.a_meta')}</div>
+    <div class="mt-9 mb-5 text-[12px] font-semibold uppercase tracking-[.2em] text-txt-4">
+      {post.data.category} — <time datetime={isoDate}>{fullDate.format(post.data.date)}</time>
+      {post.data.updated && <>{' · '}{t(lang, 'article.updated')} <time datetime={isoUpdated}>{fullDate.format(post.data.updated)}</time></>}
+      {' · '}{minutes} {t(lang, 'article.min_read')}
+    </div>
     <h1 class="text-h2 m-0">{post.data.title}</h1>
 
     <div class="my-11">
-      <ImagePlaceholder ratio="16/8" label="Visuel de l'article" radius="media" />
+      <ImagePlaceholder ratio="16/8" label={post.data.category} radius="media" />
     </div>
 
     <div class="prose max-w-none [&_h2]:text-[16px] [&_h2]:font-bold [&_h2]:tracking-[-0.02em] [&_h2]:m-0 [&_h2]:mt-[18px] [&_h2:first-child]:mt-0 [&_p]:m-0 [&_p]:text-[17px] [&_p]:leading-[1.75] [&_p]:text-[#3a3a3a] [&_p:first-of-type]:text-[16px] [&_p:first-of-type]:text-ink flex flex-col gap-[22px]">
       <Content />
     </div>
+
+    {post.data.faq && post.data.faq.length > 0 && (
+      <section class="mk-faq mt-12">
+        <h2 class="m-0 mb-4 text-[16px] font-bold tracking-[-0.02em]">{t(lang, 'service.faq')}</h2>
+        <div class="border-t border-line">
+          {post.data.faq.map((item) => (
+            <details class="group border-b border-line py-[22px]">
+              <summary class="flex cursor-pointer items-center justify-between gap-6 text-[17px] font-semibold [&::-webkit-details-marker]:hidden">
+                <span>{codeParts(item.q).map((part, i) => (i % 2 ? <code>{part}</code> : part))}</span>
+                <span class="text-[16px] text-txt-4 group-open:hidden">+</span>
+                <span class="hidden text-[16px] text-txt-4 group-open:inline">−</span>
+              </summary>
+              <p class="m-0 mt-4 text-[15px] leading-[1.7] text-txt-2">{codeParts(item.a).map((part, i) => (i % 2 ? <code>{part}</code> : part))}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+    )}
 
     <div class="mt-12 flex items-center gap-4 border-t border-line pt-7">
       <div>

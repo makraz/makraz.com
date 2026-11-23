@@ -2,14 +2,15 @@
 import { has, localePath, t, type Locale } from '../i18n';
 import logoWhite from '../assets/logo-white.png';
 
-interface Props { lang: Locale; page: string }
-const { lang, page } = Astro.props;
+interface Props { lang: Locale; page: string; title?: string } // title overrides `${page}.cta_title`
+const { lang, page, title } = Astro.props;
 ---
 {/* The page's one dark band: the single high-contrast moment before the white footer. */}
 <section class="bg-ink text-white">
   <div class="mk-container py-16 text-center">
     <img src={logoWhite.src} alt="" class="mx-auto mb-6 h-10 w-10 object-contain" />
-    <h2 class="text-h1 mx-auto max-w-[24ch] text-balance">{t(lang, `${page}.cta_title`)}</h2>
+    {/* A <p>, not a heading: this band repeats on every page, so it stays out of the content outline. */}
+    <p class="text-h1 m-0 mx-auto max-w-[24ch] text-balance">{title ?? t(lang, `${page}.cta_title`)}</p>
     {has(`${page}.cta_sub`) && (
       <p class="mx-auto mt-4 max-w-[52ch] text-[16px] leading-[1.5] text-ondark-1">{t(lang, `${page}.cta_sub`)}</p>
     )}

@@ -340,7 +340,8 @@ for (const lang of langs) {
     await expect(page.getByRole('heading', { level: 2 })).toHaveCount(3);
     await expect(page.locator('a[href="https://www.ayapsychomotricite.ma"]')).toBeVisible();
     // The gallery pairs the French services grid with the Arabic RTL view.
-    await expect(page.locator('section img')).toHaveCount(3);
+    // Hero + two gallery screenshots; the brand logos and the decorative CTA mark are excluded.
+    await expect(page.locator('img:not([alt=""]):not([alt="MAKRAZ"])')).toHaveCount(3);
   });
 }
 
@@ -520,6 +521,20 @@ for (const lang of langs) {
     // Three body sections from the content collection; the CTA band is not a heading.
     await expect(page.getByRole('heading', { level: 2 })).toHaveCount(3);
     await expect(page.locator('a[href="https://palmarena.ma"]')).toBeVisible();
-    await expect(page.locator('section img')).toHaveCount(3);
+    // Hero + two gallery screenshots; the brand logos and the decorative CTA mark are excluded.
+    await expect(page.locator('img:not([alt=""]):not([alt="MAKRAZ"])')).toHaveCount(3);
+  });
+}
+
+test('the Palmarena portfolio entry links to both the case study and the live site', async ({ page }) => {
+  await page.goto('/fr/portfolio');
+  await expect(page.locator('a[href="/fr/portfolio/palmarena"]')).toBeVisible();
+  await expect(page.locator('a[href="https://palmarena.ma"]').first()).toBeVisible();
+});
+
+for (const [lang, path] of [['fr', '/fr/services/referencement-naturel-seo'], ['en', '/en/services/seo'], ['ar', '/ar/services/seo']] as const) {
+  test(`the SEO service page shows the Palmarena case study in ${lang}`, async ({ page }) => {
+    await page.goto(path);
+    await expect(page.locator(`a[href="/${lang}/portfolio/palmarena"]`)).toBeVisible();
   });
 }

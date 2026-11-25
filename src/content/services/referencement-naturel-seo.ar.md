@@ -4,6 +4,7 @@ lang: ar
 kind: leaf
 pillar: communication
 order: 1
+project: palmarena
 title: "تحسين محركات البحث (SEO)"
 seoTitle: "تحسين محركات البحث في المغرب والأسواق الدولية"
 lead: "تدقيق تقني، ومحتوى، وسلطة رقمية: أن يجدكم من يبحث أصلًا عمّا تبيعونه."

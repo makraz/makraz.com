@@ -4,6 +4,7 @@ lang: fr
 kind: leaf
 pillar: communication
 order: 1
+project: palmarena
 title: "Référencement naturel (SEO)"
 seoTitle: "Référencement naturel (SEO) au Maroc"
 lead: "Audit technique, contenu et autorité : être trouvé par ceux qui cherchent déjà ce que vous vendez."

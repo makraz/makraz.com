@@ -71,7 +71,7 @@ const services = defineCollection({
       steps: z.array(serviceItem).optional(),
       engagement: z.object({ model: z.string(), drivers: z.string() }),
       faq: z.array(z.object({ q: z.string(), a: z.string() })).min(2),
-      project: z.enum(['farblieferant', 'phpmorocco', 'marrakechphp', 'aya']).optional(),
+      project: z.enum(['farblieferant', 'phpmorocco', 'marrakechphp', 'aya', 'palmarena']).optional(),
     })
     .superRefine((d, ctx) => {
       if (d.kind === 'leaf') {

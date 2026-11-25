@@ -11,6 +11,7 @@ import fbCard from '../../../assets/farblieferant-card.png';
 import phpCard from '../../../assets/phpmorocco-card.png';
 import mphpCard from '../../../assets/marrakechphp-card.png';
 import ayaCard from '../../../assets/aya-hero.png';
+import palmarenaCard from '../../../assets/palmarena-hero.png';
 import { getChildren, getParent, getSiblings, type ServiceData } from '../../../lib/services';
 import { t, localePath, type Locale } from '../../../i18n';
 import { localizeSlug } from '../../../lib/routes.mjs';
@@ -41,6 +42,7 @@ const PROJECTS = {
   farblieferant: { name: 'Farblieferant', img: fbCard, href: '/portfolio/farblieferant', alt: 'img.fb_card', deep: true },
   phpmorocco: { name: 'PHP Morocco', img: phpCard, href: '/portfolio/phpmorocco', alt: 'img.php_card', deep: true },
   aya: { name: 'Cabinet Aya Alaoui El Hadari', img: ayaCard, href: '/portfolio/aya', alt: 'img.aya_card', deep: true },
+  palmarena: { name: 'Palmarena Soccer Club', img: palmarenaCard, href: '/portfolio/palmarena', alt: 'img.palmarena_hero', deep: true },
   marrakechphp: { name: 'Marrakech PHP', img: mphpCard, href: '/portfolio', alt: 'img.mphp_card', deep: false },
 } as const;
 const project = data.project ? PROJECTS[data.project] : undefined;

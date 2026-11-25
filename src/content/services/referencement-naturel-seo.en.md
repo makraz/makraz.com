@@ -4,6 +4,7 @@ lang: en
 kind: leaf
 pillar: communication
 order: 1
+project: palmarena
 title: "Search engine optimisation (SEO)"
 seoTitle: "SEO for Morocco and international markets"
 lead: "Technical audit, content and authority: being found by people already looking for what you sell."

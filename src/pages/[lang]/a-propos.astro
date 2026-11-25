@@ -2,7 +2,6 @@
 import Base from '../../layouts/Base.astro';
 import Kicker from '../../components/Kicker.astro';
 import SectionIntro from '../../components/SectionIntro.astro';
-import ImagePlaceholder from '../../components/ImagePlaceholder.astro';
 import { t, localePath, type Locale } from '../../i18n';
 import { ORG_ID, PERSON_ID, PERSON_SAME_AS } from '../../lib/entities';
 
@@ -28,6 +27,7 @@ const jsonLd = {
     jobTitle: t(lang, 'about.t_role'),
     description: t(lang, 'about.t_bio'),
     worksFor: { '@id': ORG_ID },
+    image: new URL('/hamza-makraz.jpg', Astro.site).href,
     url: new URL(localePath(lang, '/a-propos'), Astro.site).href,
     ...(PERSON_SAME_AS.length ? { sameAs: PERSON_SAME_AS } : {}),
   },
@@ -113,7 +113,7 @@ const jsonLd = {
         <p class="m-0 mt-[18px] text-[15px] leading-[1.65] text-txt-2">{t(lang, 'about.t_desc')}</p>
       </SectionIntro>
       <div class="grid min-w-0 flex-1 grid-cols-[280px_1fr] items-center gap-10 max-[900px]:grid-cols-1">
-        <ImagePlaceholder ratio="1/1" class="max-w-[280px]" radius="media" />
+        <img src="/hamza-makraz.jpg" alt={t(lang, 'about.t_photo_alt')} width="640" height="640" loading="lazy" decoding="async" class="aspect-square w-full max-w-[280px] rounded-media object-cover" />
         <div>
           <h3 class="m-0 text-[16px] font-bold tracking-[-0.01em]">Hamza Makraz</h3>
           <div class="my-[6px] mb-[18px] text-[14px] text-txt-4">{t(lang, 'about.t_role')}</div>

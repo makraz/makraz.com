@@ -76,7 +76,7 @@ Search engines and AI models link the company and you to your other profiles thr
 
 **Check:** after deploying, paste `https://makraz.com/fr` and `https://makraz.com/fr/a-propos` into the [Schema Markup Validator](https://validator.schema.org/). `sameAs` should list your profiles.
 
-## 5. Founder photo (you take it, I wire it in)
+## 5. Founder photo ✅ done (`public/hamza-makraz.jpg`)
 
 Every article's author links to the About page, which still shows a grey placeholder.
 
